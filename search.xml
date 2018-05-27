@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+    
+    <entry>
+      <title><![CDATA[MongoDB好像有点坑]]></title>
+      <url>/2018/02/02/mongodb/</url>
+      <content type="html"><![CDATA[<h3 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a>MongoDB</h3><p><strong> 定义: </strong> MongoDB是一个基于分布式文件存储的数据库。由C++语言编写。旨在为WEB应用提供可扩展的高性能数据存储解决方案。MongoDB是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。他支持的数据结构非常松散，是类似json的bson格式，因此可以存储比较复杂的数据类型。Mongo最大的特点是他支持的查询语言非常强大，其语法有点类似于面向对象的查询语言，几乎可以实现类似关系数据库单表查询的绝大部分功能，而且还支持对数据建立索引。<br><a id="more"></a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>首先是安装<a href="https://www.mongodb.com/download-center#community" target="_blank" rel="external">MongoDB</a>,点击下载自己操作系统所对应的版本。这里我使用的是windows 64位版本(先在windows上试试水)。需要说的是国内的下载速度极其缓慢,建议翻墙下载。</p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>在傻瓜式安装之后需要对MongoDB进行配置。这里我把MongoDB安装在了E盘，然后我在E盘创建了一个名叫MongoDB_repo的文件夹<br><img src="/images/mongodbImage/1.png" alt="pic1 icon"><br>首先说说我遇到的坑，当我们完成这些创建步骤之后,至MongoDB的bin文件夹下运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --dbpath E:\MongoDB_repo\data\db</div></pre></td></tr></table></figure></p>
+<p>发现运行成功。浏览器输入localhost:27017发下无法访问。(据说是因为版本原因)<br>但是启动的确是启动了。<br>此时我以为默认路径被修改为我设置的路径(MongoDB在Windows下默认的数据库路径为C:\data\db)。但当我第二次直接用<strong> mongod </strong>命令启动时却发现提示错误找不到路径C:\data\db。<br>于是采用第二种方法,配置windows服务的方式,并且配置环境变量使得在任何目录下都可以启动MongoDB。<br><strong> 以下是正确做法: </strong><br><img src="/images/mongodbImage/2.png" alt="pic2 icon"><br>只需要在windows本地服务中心启动即可<br><img src="/images/mongodbImage/4.jpg" alt="pic4 icon"><br>配置环境变量这里我就不再赘述。</p>
+<p>然后启动成功进入MongoDB命令界面输入以下<br><img src="/images/mongodbImage/3.png" alt="pic3 icon"><br>以上即为成功</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 数据库 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Nosql </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[解决最近webpack项目中缺少dev-server.js文件无法使用mock数据的问题]]></title>
+      <url>/2018/01/31/newWebpackProject/</url>
+      <content type="html"><![CDATA[<h3 id="解决最近webpack项目中缺少dev-server-js文件无法使用mock数据的问题"><a href="#解决最近webpack项目中缺少dev-server-js文件无法使用mock数据的问题" class="headerlink" title="解决最近webpack项目中缺少dev-server.js文件无法使用mock数据的问题"></a>解决最近webpack项目中缺少dev-server.js文件无法使用mock数据的问题</h3><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>最近想温习一下vue+webpack,然后当想使用mock数据来模拟后台的时候,发现没有了之前项目中的dev-server.js和dev-client.js文件。<br><a id="more"></a></p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>在webpack.dev.conf.js中进行如下操作<br><strong> 适当位置添加 </strong><br>例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var express = require(&apos;express&apos;);</div><div class="line">var app = express()</div><div class="line"></div><div class="line">var goodsData = require(&apos;../mock/goods.json&apos;)</div><div class="line">var router = express.Router()</div><div class="line">app.use(&apos;/goods&apos;, router)</div></pre></td></tr></table></figure></p>
+<p>注意:前提要添加了express依赖</p>
+<p>然后找到devServer在它的配置项中添加如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">before(app) &#123;</div><div class="line">    app.get(&apos;/goods&apos;, (req, res) =&gt; &#123;</div><div class="line">    res.json(goodsData)</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>最后截图<br><img src="/images/webpackResult.png" alt="last icon"><br>添加代码格式即如上所示</p>
+<h4 id="最后记得npm-run-dev"><a href="#最后记得npm-run-dev" class="headerlink" title="最后记得npm run dev"></a>最后记得npm run dev</h4><p>我之前只是start发现没什么用,需要run dev</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 前端 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[js中的this]]></title>
+      <url>/2018/01/28/javascriptThis/</url>
+      <content type="html"><![CDATA[<h3 id="this"><a href="#this" class="headerlink" title="this"></a>this</h3><p>定义: <strong> this是在执行上下文创建时确定的一个在执行过程中不可更改的变量。 </strong></p>
+<p>所谓执行上下文,就是Javascript引擎在执行一段代码之前将代码内部会用到的一些<strong> 变量 </strong> 、<strong> 函数 </strong> 、<strong> this </strong>提前声明然后保存在变量对象中的过程。<br><a id="more"></a></p>
+<h4 id="this在函数中调用"><a href="#this在函数中调用" class="headerlink" title="this在函数中调用"></a>this在函数中调用</h4><p>函数的调用方式分为四种:</p>
+<ul>
+<li>在全局环境或者是普通函数中直接调用</li>
+<li>作为对象的方法</li>
+<li>使用apply和call</li>
+<li>作为构造函数<br>注:本篇参考至<a href="https://juejin.im/post/59748cbb6fb9a06bb21ae36d" target="_blank" rel="external">掘金</a><h4 id="在全局环境或者是普通函数中直接调用"><a href="#在全局环境或者是普通函数中直接调用" class="headerlink" title="在全局环境或者是普通函数中直接调用"></a>在全局环境或者是普通函数中直接调用</h4></li>
+</ul>
+<p><strong> 例1: </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var a = 1;</div><div class="line">function fun() &#123;</div><div class="line">   &apos;use strict&apos;;</div><div class="line">    var a = 2;</div><div class="line">      return this.a;</div><div class="line">&#125;</div><div class="line">fun();//报错 Cannot read property &apos;a&apos; of undefined</div></pre></td></tr></table></figure></p>
+<p>严格模式下this指向undefined</p>
+<p><strong> 例2: </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var a = 1;</div><div class="line">function fun() &#123;</div><div class="line">    var a = 2;</div><div class="line">      return this.a;</div><div class="line">&#125;</div><div class="line">fun();//1</div></pre></td></tr></table></figure></p>
+<p>非严格模式下,this指向window对象</p>
+<p>结论: <strong> 当函数独立调用的时候，在严格模式下它的this指向undefined，在非严格模式下，当this指向undefined的时候，自动指向全局对象(浏览器中就是window) </strong></p>
+<p>在全局环境下,this就是指向自己<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">this.a = 1;</div><div class="line">var b = 1;</div><div class="line">c = 1;</div><div class="line">console.log(this === window)//true</div><div class="line">//这三种都能得到想要的结果，全局上下文的变量对象中存在这三个变量</div></pre></td></tr></table></figure></p>
+<p>当this不在函数中时</p>
+<p><strong> 例1: </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var a = 1000;</div><div class="line">var obj = &#123;</div><div class="line">    a: 1,</div><div class="line">    b: this.a + 1</div><div class="line">&#125;</div><div class="line">function fun() &#123;</div><div class="line">    var obj = &#123;</div><div class="line">        a: 1,</div><div class="line">        c: this.a + 2 //严格模式下这块报错 Cannot read property &apos;a&apos; of undefined</div><div class="line">    &#125;</div><div class="line">    return obj.c;</div><div class="line">&#125;</div><div class="line">console.log(fun());//1002</div><div class="line">console.log(obj.b);//1001</div></pre></td></tr></table></figure></p>
+<p>这种情况下this还是指向了window。</p>
+<p><strong> 结论:当obj在全局声明的时候，obj内部属性中的this指向全局对象，当obj在一个函数中声明的时候，严格模式下this会指向undefined，非严格模式自动转为指向全局对象。</strong></p>
+<p><strong> 注意以下例子 </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var a = 1;</div><div class="line">var obj  =  &#123;</div><div class="line">    a: 2,</div><div class="line">      b: function () &#123;</div><div class="line">        function fun() &#123;</div><div class="line">          return this.a</div><div class="line">        &#125;</div><div class="line">       console.log(fun());</div><div class="line">    &#125;</div><div class="line">&#125; </div><div class="line">obj.b();//1</div></pre></td></tr></table></figure></p>
+<p><strong> 原因:fun函数虽然在obj.b方法中定义，但它还是一个普通函数，直接调用在非严格模式下指向undefined，又自动指向了全局对象，正如预料，严格模式会报错undefined.a不成立，a未定义。</strong></p>
+<h4 id="作为对象的方法"><a href="#作为对象的方法" class="headerlink" title="作为对象的方法"></a>作为对象的方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var a = 1;</div><div class="line">var obj = &#123;</div><div class="line">  a: 2,</div><div class="line">  b: function() &#123;</div><div class="line">    return this.a;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">console.log(obj.b())//2</div></pre></td></tr></table></figure>
+<p><strong> 注意以下例子: </strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var a = 1;</div><div class="line">var obj = &#123;</div><div class="line">  a: 2,</div><div class="line">  b: function() &#123;</div><div class="line">    return this.a;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">var t = obj.b;</div><div class="line">console.log(t());//1</div></pre></td></tr></table></figure>
+<p>如上，t函数执行结果竟然是全局变量1，为啥呢？这就涉及Javascript的内存空间了，就是说，obj对象的b属性存储的是对该匿名函数的一个引用，可以理解为一个指针。当赋值给t的时候，并没有单独开辟内存空间存储新的函数，而是让t存储了一个指针，该指针指向这个函数。相当于执行了这么一段伪代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var a = 1;</div><div class="line">function fun() &#123;//此函数存储在堆中</div><div class="line">    return this.a;</div><div class="line">&#125;</div><div class="line">var obj = &#123;</div><div class="line">  a: 2,</div><div class="line">  b: fun //b指向fun函数</div><div class="line">&#125;</div><div class="line">var t = fun;//变量t指向fun函数</div><div class="line">console.log(t());//1</div></pre></td></tr></table></figure></p>
+<p>此时的t就是一个指向fun函数的指针，调用t，相当于直接调用fun，套用以上规则，打印出来1自然很好理解了</p>
+<h4 id="使用apply-call"><a href="#使用apply-call" class="headerlink" title="使用apply,call"></a>使用apply,call</h4><p><strong> apply </strong><br>apply() 方法调用一个函数, 其具有一个指定的this值，以及作为一个数组（或类似数组的对象）提供的参数<br><strong> 语法 </strong><br>fun.apply(thisArg, [argsArray])<br><strong> thisArg </strong><br>在 fun 函数运行时指定的 this 值。需要注意的是，指定的 this 值并不一定是该函数执行时真正的 this 值，如果这个函数处于非严格模式下，则指定为 null 或 undefined 时会自动指向全局对象（浏览器中就是window对象），同时值为原始值（数字，字符串，布尔值）的 this 会指向该原始值的自动包装对象。</p>
+<p><strong> argsArray </strong><br>一个数组或者类数组对象，其中的数组元素将作为单独的参数传给 fun 函数。如果该参数的值为null 或 undefined，则表示不需要传入任何参数。从ECMAScript 5 开始可以使用类数组对象。浏览器兼容性请参阅本文底部内容。</p>
+<p><strong> call </strong><br>call() 方法调用一个函数, 其具有一个指定的this值和分别地提供的参数(参数的列表)。<br><strong> 语法 </strong><br>fun.call(thisArg, arg1, arg2, …)</p>
+<p><strong> thisArg </strong><br>在fun函数运行时指定的this值。需要注意的是，指定的this值并不一定是该函数执行时真正的this值，如果这个函数处于非严格模式下，则指定为null和undefined的this值会自动指向全局对象(浏览器中就是window对象)，同时值为原始值(数字，字符串，布尔值)的this会指向该原始值的自动包装对象。</p>
+<p><strong> arg1, arg2, … </strong><br>指定的参数列表。</p>
+<h4 id="作为构造函数"><a href="#作为构造函数" class="headerlink" title="作为构造函数"></a>作为构造函数</h4><p>何为构造函数? 所谓构造函数就是用来new对象的函数，像Function、Object、Array、Date等都是全局定义的构造函数。其实每一个函数都可以new对象，那些批量生产我们需要的对象的函数就叫它构造函数罢了。注意，构造函数首字母记得大写。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">function Fun() &#123;</div><div class="line">  this.name = &apos;xxx&apos;;</div><div class="line">  this.age = 21;</div><div class="line">  this.sex = &apos;man&apos;;</div><div class="line">  this.run = function () &#123;</div><div class="line">    return this.name + &apos;正在跑步&apos;;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">Fun.prototype = &#123;</div><div class="line">  contructor: Fun,</div><div class="line">  say: function () &#123;</div><div class="line">    return this.name + &apos;正在说话&apos;;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">var f = new Fun();</div><div class="line">f.run();//xxx正在跑步</div><div class="line">f.say();/xxx正在说话</div></pre></td></tr></table></figure>
+<p>也就是说new做了下面这些事:</p>
+<ul>
+<li>创建一个临时对象</li>
+<li>给临时对象绑定原型</li>
+<li>给临时对象对应属性赋值</li>
+<li>将临时对象return</li>
+</ul>
+<h4 id="箭头函数-gt"><a href="#箭头函数-gt" class="headerlink" title="箭头函数 =&gt;"></a>箭头函数 =&gt;</h4><p>那么箭头函数的this是怎么确定的呢？箭头函数会捕获其所在上下文的 this 值，作为自己的 this 值，也就是说箭头函数的this在词法层面就完成了绑定。apply，call方法只是传入参数，却改不了this。</p>
+<p><strong> 例1: </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var a = 1;</div><div class="line">var obj = &#123;</div><div class="line">  a: 2</div><div class="line">&#125;;</div><div class="line">function fun() &#123;</div><div class="line">    var a = 3;</div><div class="line">    let f = () =&gt; console.log(this.a);</div><div class="line">      f();</div><div class="line">&#125;;</div><div class="line">fun();//1</div><div class="line">fun.call(obj);//2</div></pre></td></tr></table></figure></p>
+<p>如上，fun直接调用，fun的上下文中的this值为window，注意，这个地方有点绕。fun的上下文就是此箭头函数所在的上下文，因此此时f的this为fun的this也就是window。当fun.call(obj)再次调用的时候，新的上下文创建，fun此时的this为obj，也就是箭头函数的this值。</p>
+<p><strong> 例2: </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function Fun() &#123;</div><div class="line">    this.name = &apos;Damonare&apos;;</div><div class="line">&#125;</div><div class="line">Fun.prototype.say = () =&gt; &#123;</div><div class="line">    console.log(this);</div><div class="line">&#125;</div><div class="line">var f = new Fun();</div><div class="line">f.say();//window</div></pre></td></tr></table></figure></p>
+<p>有的同学看到这个会很懵逼，感觉上this应该指向f这个实例对象啊。不是的，此时的箭头函数所在的上下文是<strong>proto</strong>所在的上下文也就是Object函数的上下文，而Object的this值就是全局对象。</p>
+<p><strong> 例3: </strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function Fun() &#123;</div><div class="line">    this.name = &apos;Damonare&apos;;</div><div class="line">      this.say = () =&gt; &#123;</div><div class="line">        console.log(this);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var f = new Fun();</div><div class="line">f.say();//Fun的实例对象</div></pre></td></tr></table></figure></p>
+<p>如上，this.say所在的上下文，此时箭头函数所在的上下文就变成了Fun的上下文环境，而因为上面说过当函数作为构造函数调用的时候(也就是new的作用)上下文环境的this指向实例对象。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程语言 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[js中null和undefined区别]]></title>
+      <url>/2018/01/26/jsNullAndUndefined/</url>
+      <content type="html"><![CDATA[<h4 id="js中-null-和-undefined-的区别"><a href="#js中-null-和-undefined-的区别" class="headerlink" title="js中 null 和 undefined 的区别"></a>js中 null 和 undefined 的区别</h4><p>Undefined类型只有一个值，即undefined。当声明的变量(已被声明)还未被初始化时，变量的默认值为undefined。<br>Null类型也只有一个值，即null。null用来表示尚未存在的对象，常用来表示函数企图返回一个不存在的对象。<br> js 代码</p>
+<font color="#FF7F50">var oValue;<br>alert(oValue == undefined); //output “true”<br></font>
+
+<p>这段代码显示为true,代表oVlaue的值即为undefined，因为我们没有初始化它。<br><a id="more"></a><br>示例代码</p>
+<font color="#FF7F50">alert(null == document.getElementById(‘notExistElement’));</font>
+
+<p>当页面上不存在id为”notExistElement”的DOM节点时，这段代码显示为”true”，因为我们尝试获取一个不存在的对象。</p>
+<p>示例代码</p>
+<font color="#FF7F50">alert(typeof undefined); //output “undefined”</font><br><font color="#FF7F50">alert(typeof null); //output “object”</font>  
+
+<p>第一行代码很容易理解，undefined的类型为Undefined；第二行代码却让人疑惑，为什么null的类型又是Object了呢？其实这是JavaScript最初实现的一个错误，后来被ECMAScript沿用下来。在今天我们可以解释为，null即是一个不存在的对象的占位符，但是在实际编码时还是要注意这一特性。</p>
+<p>示例代码<br> <font color="#FF7F50">alert(null == undefined); //output “true”</font>  </p>
+<p>ECMAScript认为undefined是从null派生出来的，所以把它们定义为相等的。但是，如果在一些情况下，我们一定要区分这两个值，那应该怎么办呢？可以使用下面的两种方法。</p>
+<p>示例代码</p>
+<font color="#FF7F50">alert(null === undefined); //output “false”</font><br><font color="#FF7F50">alert(typeof null == typeof undefined); //output “false”</font>  
+
+<p>使用typeof方法在前面已经讲过，null与undefined的类型是不一样的，所以输出”false”。而===代表绝对等于，在这里null === undefined输出false。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程语言 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[js中的arguments]]></title>
+      <url>/2018/01/26/javascriptArguments/</url>
+      <content type="html"><![CDATA[<h3 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h3><p>javascript并没有函数重载功能,但Arguments对象能够模拟重载。每个函数都会有一个Arguments对象实例arguments,它引用着函数的实参,可以用数组下标”[]”引用arguments的元素。arguments.length为函数实参个数,arguments.callee引用函数自身。(在匿名函数中如果要递归调用函数自身,可以使用arguments.callee)。<br><a id="more"></a></p>
+<h4 id="arguments他的特性和使用方法"><a href="#arguments他的特性和使用方法" class="headerlink" title="arguments他的特性和使用方法"></a>arguments他的特性和使用方法</h4><p>特性：</p>
+<p>arguments对象和Function是分不开的。因为arguments这个对象不能显式创建，arguments对象只有函数开始时才可用。</p>
+<p>使用方法：</p>
+<p>虽然arguments对象并不是一个数组，但是访问单个参数的方式与访问数组元素的方式相同</p>
+<p>例如：</p>
+<p>arguments[0],arguments[1],……arguments[n],</p>
+<p>示例:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function test() &#123;</div><div class="line">        var s = &quot;&quot;;</div><div class="line">        for (var i = 0; i &lt; arguments.length; i++) &#123;</div><div class="line">            alert(arguments[i]);</div><div class="line">            s += arguments[i] + &quot;,&quot;;</div><div class="line">        &#125;</div><div class="line">        return s;</div><div class="line">    &#125;</div><div class="line">    test(&quot;name&quot;, &quot;age&quot;)</div><div class="line"></div><div class="line">输出结果：</div><div class="line"></div><div class="line">name,age</div></pre></td></tr></table></figure></p>
+<h4 id="callee属性，返回正被执行的-Function-对象"><a href="#callee属性，返回正被执行的-Function-对象" class="headerlink" title="callee属性，返回正被执行的 Function 对象"></a>callee属性，返回正被执行的 Function 对象</h4><p>也就是所指定的 Function 对象的正文。callee 属性是 arguments 对象的一个成员，仅当相关函数正在执行时才可用。</p>
+<p>callee 属性的初始值就是正被执行的 Function 对象，这允许匿名的递归函数。</p>
+<p>示例:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var sum = function (n) &#123;</div><div class="line">        if (1 == n) &#123;</div><div class="line">            return 1;</div><div class="line">        &#125; else &#123;</div><div class="line">            return n + arguments.callee(n - 1);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    alert(sum(6));</div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程语言 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[事件绑定、捕获与冒泡以及事件执行顺序]]></title>
+      <url>/2018/01/25/captureAndBubble/</url>
+      <content type="html"><![CDATA[<h3 id="事件绑定、捕获与冒泡"><a href="#事件绑定、捕获与冒泡" class="headerlink" title="事件绑定、捕获与冒泡"></a>事件绑定、捕获与冒泡</h3><h4 id="addEventListen-方法用于向指定元素添加事件句柄"><a href="#addEventListen-方法用于向指定元素添加事件句柄" class="headerlink" title="addEventListen()方法用于向指定元素添加事件句柄"></a>addEventListen()方法用于向指定元素添加事件句柄</h4><p>示例:element.addEventListener(event, function, useCapture)，<br>其中的event 必须。字符串，指定事件名。 不要使用 “on” 前缀。 例如，使用 “click” ,而不是使用 “onclick”。<br>function  必须。指定要事件触发时执行的函数<br>useCapture  可选。布尔值，指定事件是否在捕获或冒泡阶段执行。默认为false,即为冒泡。<br><a id="more"></a><br>如果给同一事件绑定多个处理函数，先绑定的先执行。<br>a) 事件处理函数中的this代表的是dom对象，不是window,这个特性与attach不同。<br>b)同一个事件处理函数可以绑定2次，一次用于事件捕获一次用于事件冒泡。但是如果绑定的是同一个事件处理函数，并且都是事件冒泡类型或者事件捕获类型，那么只能绑定一次。<br>c)不同的事件处理函数可以重复绑定，这个特性与attachEvent一致。</p>
+<h4 id="事件处理函数的执行顺序"><a href="#事件处理函数的执行顺序" class="headerlink" title="事件处理函数的执行顺序"></a>事件处理函数的执行顺序</h4><p>addEventListener与attachEvent表现一致，如果给同一事件绑定多个处理函数，先绑定的先执行。注意:给同一个dom对象的同一事件绑定多个事件的处理函数此时不涉及事件的冒泡和捕捉的问题所以addEventListener的第三个参数在这种场景下没有什么用。</p>
+<h4 id="捕获与冒泡"><a href="#捕获与冒泡" class="headerlink" title="捕获与冒泡"></a>捕获与冒泡</h4><p>useCapture=false意味着：将事件处理函数加入到冒泡阶段，在冒泡阶段会被调用；useCapture=true意味着：将事件处理函数加入到捕获阶段，在捕获阶段会被调用。从DOM事件流模型可以看出，捕获阶段的事件处理函数，一定比冒泡阶段的事件处理函数先执行。</p>
+<h5 id="事件函数执行顺序结论：捕获阶段的处理函数最先执行，其次是目标阶段的处理函数，最后是冒泡阶段的处理函数。目标阶段的处理函数，先注册的先执行，后注册的后执行。"><a href="#事件函数执行顺序结论：捕获阶段的处理函数最先执行，其次是目标阶段的处理函数，最后是冒泡阶段的处理函数。目标阶段的处理函数，先注册的先执行，后注册的后执行。" class="headerlink" title="事件函数执行顺序结论：捕获阶段的处理函数最先执行，其次是目标阶段的处理函数，最后是冒泡阶段的处理函数。目标阶段的处理函数，先注册的先执行，后注册的后执行。"></a>事件函数执行顺序结论：捕获阶段的处理函数最先执行，其次是目标阶段的处理函数，最后是冒泡阶段的处理函数。目标阶段的处理函数，先注册的先执行，后注册的后执行。</h5><h4 id="阻止事件冒泡和捕获"><a href="#阻止事件冒泡和捕获" class="headerlink" title="阻止事件冒泡和捕获"></a>阻止事件冒泡和捕获</h4><h5 id="停止传播："><a href="#停止传播：" class="headerlink" title="停止传播："></a>停止传播：</h5><p>事件对象有一个方法可以阻止事件的传播 event.stopPropagation();  </p>
+<h5 id="阻止事件的默认行为："><a href="#阻止事件的默认行为：" class="headerlink" title="阻止事件的默认行为："></a>阻止事件的默认行为：</h5><p>如阻止一个链接的点击效果，阻止表单的提交效果 event.preventDefault();</p>
+<h3 id="IE下不兼容行为"><a href="#IE下不兼容行为" class="headerlink" title="IE下不兼容行为"></a>IE下不兼容行为</h3><p>针对IE模型的事件写法<br>适用于IE6、7、8</p>
+<h5 id="IE的事件模型相比W3C的标准事件，主要有以下几点不同："><a href="#IE的事件模型相比W3C的标准事件，主要有以下几点不同：" class="headerlink" title="IE的事件模型相比W3C的标准事件，主要有以下几点不同："></a>IE的事件模型相比W3C的标准事件，主要有以下几点不同：</h5><p>1.绑定事件的函数不一样,IE中用attachEvent,detachEvent<br>2.事件必须要用on,比如标准的第一个参数为click,相对的IE中要写onclick<br>3.IE6模型中，不支持捕获模型，只支持冒泡(靠JS弥补不了)。IE7、8已经支持捕获<br>4.IE7、8中还有个毛病，就是先绑定的事件后发生(准确的说,有可能随机发生)。<br>5.绑定的事件中,this指向问题 W3C模型中,this指向dom对象本身，而IE模型中this指向window。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 编程语言 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[负载均衡]]></title>
+      <url>/2017/12/14/balanceload/</url>
+      <content type="html"><![CDATA[<h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h2><h3 id="1-安装apache，"><a href="#1-安装apache，" class="headerlink" title="1.安装apache，"></a>1.安装apache，</h3><p>  进入apache的conf目录，打开apache的配置文件httpd.conf，写下apache的路径<br>  <img src="/images/balance/1.png" alt="1 icon"><br>  运行apache，命令行httpd –k start 出现apache首页即为配置成功<br><a id="more"></a></p>
+<h3 id="2-配置tomcat"><a href="#2-配置tomcat" class="headerlink" title="2.配置tomcat"></a>2.配置tomcat</h3><pre><code>下载两个tomcat，分别在环境变量中配置CATALINA_HOME以及CATALINA_HOME2、CATALINA_BASE和CATALINA_BASE2（一个tomcat对应一个CATALINA_HOME）并修改第2个tomcat bin中的批处理文件starup.bat和catalina.bat，将里面的CATALINA_HOME和CATALINA_BASE全部替换为CATALINA_HOME2和CATALINA_BASE2。
+启动tomcat，看见tomcat首页即为配置成功。
+</code></pre><h3 id="3-继续修改apache中httpd-conf文件"><a href="#3-继续修改apache中httpd-conf文件" class="headerlink" title="3.继续修改apache中httpd.conf文件"></a>3.继续修改apache中httpd.conf文件</h3><p> <img src="/images/balance/2.jpg" alt="2 icon"><br> <img src="/images/balance/3.jpg" alt="3 icon"><br> <img src="/images/balance/4.jpg" alt="4 icon"><br> <img src="/images/balance/5.jpg" alt="5 icon"><br> <img src="/images/balance/6.jpg" alt="6 icon"><br> 取消注释<br>并在文件末尾加上<br> <img src="/images/balance/7.png" alt="7 icon"></p>
+<h3 id="4-修改apache中httpd-vhosts-conf"><a href="#4-修改apache中httpd-vhosts-conf" class="headerlink" title="4.修改apache中httpd-vhosts.conf"></a>4.修改apache中httpd-vhosts.conf</h3><p>   添加如下语句然后在apache目录下创建log文件夹<br>   <img src="/images/balance/20.png" alt="20 icon"></p>
+<h3 id="5-修改tomcat的server-xml"><a href="#5-修改tomcat的server-xml" class="headerlink" title="5.修改tomcat的server.xml"></a>5.修改tomcat的server.xml</h3><pre><code>更改以下几个端口号
+</code></pre><p>   <img src="/images/balance/8.png" alt="8 icon"><br>   <img src="/images/balance/9.jpg" alt="9 icon"><br>   <img src="/images/balance/10.jpg" alt="10 icon"><br>   将此行取消注释<br>   <img src="/images/balance/11.jpg" alt="11 icon"></p>
+<p>   同理第2个tomcat如下<br>   <img src="/images/balance/12.jpg" alt="12 icon"><br>   <img src="/images/balance/13.jpg" alt="13 icon"><br>   <img src="/images/balance/14.jpg" alt="14 icon"><br>   <img src="/images/balance/15.jpg" alt="15 icon"></p>
+<h3 id="6-在两个tomcat下分别创建test文件夹，在文件夹创建test-jsp文件，并且编写test-jsp"><a href="#6-在两个tomcat下分别创建test文件夹，在文件夹创建test-jsp文件，并且编写test-jsp" class="headerlink" title="6.在两个tomcat下分别创建test文件夹，在文件夹创建test.jsp文件，并且编写test.jsp"></a>6.在两个tomcat下分别创建test文件夹，在文件夹创建test.jsp文件，并且编写test.jsp</h3><p>   <img src="/images/balance/16.png" alt="16 icon"><br>   <img src="/images/balance/17.png" alt="17 icon"></p>
+<h3 id="7-打开浏览器输入127-0-0-1-test-test-js"><a href="#7-打开浏览器输入127-0-0-1-test-test-js" class="headerlink" title="7.打开浏览器输入127.0.0.1/test/test.js"></a>7.打开浏览器输入127.0.0.1/test/test.js</h3><p>   <img src="/images/balance/18.png" alt="18 icon"><br>   当关闭tomcat1是出现tomcat2的页面<br>   <img src="/images/balance/19.png" alt="19 icon"></p>
+]]></content>
+      
+        <categories>
+            
+            <category> 后端 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 负载均衡 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[docker]]></title>
+      <url>/2017/10/30/docker/</url>
+      <content type="html"><![CDATA[<p><img src="/images/docker.jpg" alt="docker icon"></p>
+<h2 id="什么是docker"><a href="#什么是docker" class="headerlink" title="什么是docker"></a>什么是docker</h2><p>1.Docker is the world’s leading software containerization platform.</p>
+<p>2.Docker公司开发,开源,托管在github.</p>
+<p>3.跨平台,支持windows、MacOS、Linux.<br><a id="more"></a></p>
+<h2 id="docker思想"><a href="#docker思想" class="headerlink" title="docker思想"></a>docker思想</h2><p>1.集装箱</p>
+<p>2.标准化(运输方式、存储方式、API接口)</p>
+<p>3.隔离</p>
+<h2 id="docker镜像"><a href="#docker镜像" class="headerlink" title="docker镜像"></a>docker镜像</h2><p>通过联合文件系统达到文件分层的效果,与git同理</p>
+<h2 id="docker容器"><a href="#docker容器" class="headerlink" title="docker容器"></a>docker容器</h2><p>Docker容器的本质是一个进程。Docker镜像的每一层都是只读的，而容器作为最上层，是可读可写的。如果程序需要对镜像进行修改，那么Docker会把要修改的镜像文件拷贝到最上层的容器中，然后再进行修改。往后对该文件的访问会优先从容器中读取。</p>
+<h2 id="docker仓库"><a href="#docker仓库" class="headerlink" title="docker仓库"></a>docker仓库</h2><p>1.自己提供的，速度很慢<a href="https://hub.docker.com" target="_blank" rel="external">hub.docker.com</a><br>2.国内自己提供的，如网易蜂巢<a href="https://c.163.com" target="_blank" rel="external">c.163.com</a></p>
+<h2 id="docker常用命令"><a href="#docker常用命令" class="headerlink" title="docker常用命令"></a>docker常用命令</h2><p>容器生命周期管理 — docker [run|start|stop|restart|kill|rm|pause|unpause]<br>容器操作运维 — docker [ps|inspect|top|attach|events|logs|wait|export|port]<br>容器rootfs命令 — docker [commit|cp|diff]<br>镜像仓库 — docker [login|pull|push|search]<br>本地镜像管理 — docker [images|rmi|tag|build|history|save|import]<br>其他命令 — docker [info|version]</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 后端 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[ip地址理解]]></title>
+      <url>/2017/10/26/ip/</url>
+      <content type="html"><![CDATA[<h2 id="ip地址分类"><a href="#ip地址分类" class="headerlink" title="ip地址分类"></a>ip地址分类</h2><ol>
+<li><p>A类地址</p>
+<p>A类地址的表示范围为：0.0.0.0~126.255.255.255，默认网络掩码为：255.0.0.0；A类地址分配给规模特别大的网络使用。A类网络用第一组数字表示网络本身的地址，后面三组数字作为连接于网络上的主机的地址。分配给具有大量主机（直接个人用户）而局域网络个数较少的大型网络。例如IBM公司的网络。</p>
+<a id="more"></a></li>
+<li><p>B类地址</p>
+<p>B类地址的表示范围为：128.0.0.0~191.255.255.255，默认网络掩码为：255.255.0.0；B类地址分配给一般的中型网络。B类网络用第一、二组数字表示网络的地址，后面两组数字代表网络上的主机地址。</p>
+</li>
+<li><p>C类地址</p>
+<p>C类地址的表示范围为：192.0.0.0~223.255.255.255，默认网络掩码为：255.255.255.0；C类地址分配给小型网络，如一般的局域网和校园网，它可连接的主机数量是最少的，采用把所属的用户分为若干的网段进行管理。C类网络用前三组数字表示网络的地址，最后一组数字作为网络上的主机地址。</p>
+</li>
+</ol>
+<h2 id="私有ip地址"><a href="#私有ip地址" class="headerlink" title="私有ip地址"></a>私有ip地址</h2><pre><code>私有IP地址的范围有： 
+</code></pre><p>   A类: 10.0.0.0-10.255.255.255 </p>
+<p>   B类: 172.16.0.0—172.31.255.255 </p>
+<p>   C类: 192.168.0.0-192.168.255.255 </p>
+<p>   上述的IP地址都是可以使用在局域网中的。</p>
+<h2 id="常见ip地址分辨"><a href="#常见ip地址分辨" class="headerlink" title="常见ip地址分辨"></a>常见ip地址分辨</h2><p>一、0.0.0.0</p>
+<p>  严格说来，0.0.0.0已经不是一个真正意义上的IP地址了。它表示的是这样一个集合：所有不清楚的主机和目的网络。这里的“不清楚”是指在本机的路由表里没有特定条目指明如何到达。对本机来说，它就是一个“收容所”，所有不认识的“三无”人员，一律送进去。如果你在网络设置中设置了缺省网关，那么Windows系统会自动产生一个目的地址为0.0.0.0的缺省路由。</p>
+<p>二、255.255.255.255</p>
+<p>  限制广播地址。对本机来说，这个地址指本网段内(同一广播域)的所有主机。如果翻译成人类的语言，应该是这样：“这个房间里的所有人都注意了！”这个地址不能被路由器转发。</p>
+<p>三、127.0.0.1</p>
+<p>  本机地址，主要用于测试。用汉语表示，就是“我自己”。在Windows系统中，这个地址有一个别名“Localhost”。寻址这样一个地址，是不能把它发到网络接口的。除非出错，否则在传输介质上永远不应该出现目的地址为“127.0.0.1”的数据包。</p>
+<h2 id="关于ip的常用命令行"><a href="#关于ip的常用命令行" class="headerlink" title="关于ip的常用命令行"></a>关于ip的常用命令行</h2><p>1.·arp -a或arp -g<br>　　用于查看高速缓存中的所有项目。-a和-g参数的结果是一样的，多年来-g一直是UNIX平台上用来显示ARP高速缓存中所有项目的选项，而Windows用的是arp -a（-a可被视为all，即全部的意思），但它也可以接受比较传统的-g选项。<br>  <img src="/images/arp.png" alt="arp icon"><br>2.netstat<br>  netstat命令的功能是显示网络连接、路由表和网络接口信息，可以让用户得知目前都有哪些网络连接正在运作。<br>  选项：<br>   -t:列出TCP协议端口<br>   -u:列出UDP协议端口<br>   -l:仅列出在监听状态网络服务<br>   -a: 查看所有连接和监听端口<br>   -n: 显示IP地址和端口号，而不显示域名和服务器<br>  <img src="/images/netstat.png" alt="netstat icon"></p>
+<p>3.route<br>route -n</p>
+<p>#查看路由列表(可以看到网关)</p>
+<p>route add default gw [IP]</p>
+<p>#临时设定网关</p>
+<p>4.<br>ifdown 网卡设备名</p>
+<p>#禁用该网卡设备</p>
+<p>ifup 网卡设备名</p>
+<p>#启用该网卡设备</p>
+<p>5.nslookup<br>nslookup [域名]</p>
+<p>#翻译域名对应哪个IP</p>
+<p>3.ping<br>  ping命令用于：确定网络和各外部主机的状态；跟踪和隔离硬件和软件问题；测试、评估和管理网络。如果主机正在运行并连在网上，它就对回送信号进行响应。每个回送信号请求包含一个网际协议（IP）和 ICMP 头，后面紧跟一个 tim 结构，以及来填写这个信息包的足够的字节。缺省情况是连续发送回送信号请求直到接收到中断信号（Ctrl-C）。<br>  ping 命令每秒发送一个数据报并且为每个接收到的响应打印一行输出。ping 命令计算信号往返时间和(信息)包丢失情况的统计信息，并且在完成之后显示一个简要总结。ping 命令在程序超时或当接收到 SIGINT 信号时结束。Host 参数或者是一个有效的主机名或者是因特网地址。<br>  ping [选项] ip或域名<br>  选项：<br>     -c 次数：指定ping包的次数</p>
+<p><img src="/images/ping.png" alt="ping icon"></p>
+<p>4.tcpdump 抓包命令<br>tcpdump -i eth0 -nnX port 21<br>选项：<br>     -i 指定网卡接口；<br>     -nn 将数据包中的域名与服务转为IP和端口；<br>     -X 以十六进制和ASCII码显示数据包内容；<br>     port 指定监听的端口</p>
+<p>5.telnet<br>telnet [域名或IP] [端口]</p>
+<p>#远程管理与端口探测命令</p>
+<p>6.traceroute<br>traceroute [选项] IP或域名</p>
+<p>#路由跟踪命令<br>选项：<br>   -n 使用IP，不使用域名，速度更快</p>
+<p>7.wget </p>
+<p>#下载命令</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 网络管理 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> ip地址 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Vue.js填了个坑]]></title>
+      <url>/2017/07/19/vue/</url>
+      <content type="html"><![CDATA[<h2 id="Vue-js"><a href="#Vue-js" class="headerlink" title="Vue.js"></a>Vue.js</h2><p>最近在做一个项目，项目要求是前端要用Vue.js后台用node.js。<br>下面分享一下现在我对于Vue.js的理解以及在写代码过程中所遇到的坑。<br><a id="more"></a></p>
+<h3 id="Vue-js简单介绍"><a href="#Vue-js简单介绍" class="headerlink" title="Vue.js简单介绍"></a>Vue.js简单介绍</h3><blockquote>
+<p>摘自Vue.js官网</p>
+</blockquote>
+<p>Vue.js（读音 /vjuː/，类似于 view） 是一套构建用户界面的渐进式框架。与其他重量级框架不同的是，Vue 采用自底向上增量开发的设计。Vue 的核心库只关注视图层，它不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与单文件组件和 Vue 生态系统支持的库结合使用时，Vue 也完全能够为复杂的单页应用程序提供驱动。</p>
+<p><img src="https://cn.vuejs.org/images/logo.png" alt="vue icon"></p>
+<h3 id="Vue-js的安装"><a href="#Vue-js的安装" class="headerlink" title="Vue.js的安装"></a>Vue.js的安装</h3><p>具体的安装步骤官网都有，直接贴官网<a href="https://cn.vuejs.org/" target="_blank" rel="external">Vue.js</a><br>我想说的是在Vue1.0的时候有一个官方推荐的 ajax 插件 vue-resource，但是自从 Vue 更新到 2.0 之后，作者就宣告不在对Vue-resource更新了，取而代之的是神器axios。<br>引入方式只要用简单的脚手架:npm install axios</p>
+<h3 id="Vue-js的请求部分"><a href="#Vue-js的请求部分" class="headerlink" title="Vue.js的请求部分"></a>Vue.js的请求部分</h3><p>然后贴一下我最近写的一点关于Vue.js中发送请求的方式，我的部分只用到了Get和Post请求<br>直接上代码<br>Get:<img src="/images/get.png" alt="get icon"><br>Post:<img src="/images/post.png" alt="post icon"><br>这里就引出我遇到的的第一个坑，this的作用域问题.在这之前先要说一下 “=&gt;{}” ，这个箭头函数是ES6语法的新特性相当于ES5语法的 “function(){}”，还有关于Promise，以及它的then方法，也是ES6的新特性。关于ES6语法大家可以看一下阮一峰的这篇文章 <a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">ECMAScript 6 入门</a><br>回到正题，回调函数所带来一系列的this作用域问题，大家可以看上面两张get和post的图，此时在回调函数里的this已经不是之前的Vue的对象，而是export default这整个对象。<br>解决方法:创建临时对象，即上图的 <strong>let _this = this </strong>,或者直接用=&gt;{}。</p>
+<h3 id="Vue-js与其他UI框架的结合使用"><a href="#Vue-js与其他UI框架的结合使用" class="headerlink" title="Vue.js与其他UI框架的结合使用"></a>Vue.js与其他UI框架的结合使用</h3><p>Vue.js官方推荐的UI框架是elementui，它的每个组件的代码部分都是用了Vue。可以这么说，在学习Vue的过程中elementui帮了我很大的忙。接着我们想在项目里运用layui，之前同组的小伙伴尝试了Vue高大上的服务端渲染，发现layui的js不能运行。于是最后还是回到客户端。<br>下图是我用了layui对象的laypage方法进行分页(因为之前课程设计中用过我对它情有独钟)，它与原来的jquery的使用方式有些不同，大家可以比较着看。<br><a href="http://www.layui.com/laypage/" target="_blank" rel="external">laypage的jquery使用方法</a><br><img src="/images/fenye.png" alt="fenye icon"></p>
+<h3 id="Vue-js的指令部分"><a href="#Vue-js的指令部分" class="headerlink" title="Vue.js的指令部分"></a>Vue.js的指令部分</h3><p>Vue主要有6个指令<br>1.v-if 2.v-show 3.v-else 4.v-for 5.v-bind 6.v-on<br>具体用法我就不展开了，参照这篇文章<a href="http://www.cnblogs.com/new-dream-new-hope/p/5777012.html" target="_blank" rel="external">Vue.js常用指令总结</a><br>说说我这里碰到的问题，首先一个数据绑定问题。因为Vue是JS的框架，它简化了JS，它是MVVM模式的。它有一个双向数据绑定的功能(听起来是不是很炫酷)，之前我以为仅仅只有v-model绑定数据，而其他指令比如v-for仅仅只在页面加载的时候渲染完成页面，这可能是受之前用<strong>thinkphp</strong>(php的一个框架)和<strong>smaty</strong>(php渲染页面的视图引擎)的影响，这两者都是直接在加载时渲染完页面的。然而Vue是绑定数据，数据一有改变所有绑定这个数据的地方通俗点就是所有用到这个数据的地方都会有动态的改变。<br>不多说，直接上代码：<br><img src="/images/model.png" alt="model icon"><br>还有一个坑是v-for的index参数<br><img src="/images/index1.png" alt="index1 icon"><br><img src="/images/index2.png" alt="index2 icon"><br>以上是正确的用法，我碰到的问题是我之前直接用this.index获取元素的下标，console.log显示为undefined，但是splice(this.index，1)居然能执行，我就觉得很神奇，但好在及时找到了正确的方法。</p>
+<h2 id="前端的前景"><a href="#前端的前景" class="headerlink" title="前端的前景"></a>前端的前景</h2><p>之前去某上市公司认知实习时，了解到现阶段前端工程师是稀缺的，但是后端工程师是核心，大公司都没有全栈这个概念。但其实我的理解是，随着前端的发展，前端能做的事情越来越多不再是简单的做页面和传数据，比如如果业务逻辑放在前端来处理的话，后端会变得非常简洁。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>第一次写技术博客，希望大家多多批评，能一起交流一起进步。</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 前端 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Vue.js </tag>
+            
+            <tag> mvvm </tag>
+            
+            <tag> 前端 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+  
+  
+</search>
