@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[hexo 博客搭建]]></title>
-    <url>%2F2018%2F05%2F27%2Fhexo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%2F</url>
-    <content type="text"><![CDATA[hexo 搭建博客浪费了很多时间搭建踩坑]]></content>
-      <categories>
-        <category>java</category>
-      </categories>
-      <tags>
-        <tag>java</tag>
-        <tag>blog</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Second Blog]]></title>
     <url>%2F2018%2F05%2F27%2Fsecond-blog%2F</url>
     <content type="text"><![CDATA[Welcome to my blogthis is my second blog]]></content>
@@ -21,12 +9,24 @@
       </categories>
   </entry>
   <entry>
+    <title><![CDATA[hexo 博客搭建]]></title>
+    <url>%2F2018%2F05%2F27%2Fhexo-%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%2F</url>
+    <content type="text"><![CDATA[hexo 搭建博客浪费了很多时间搭建踩坑]]></content>
+      <categories>
+        <category>java</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[First Blog]]></title>
     <url>%2F2018%2F05%2F27%2Ffirst-blog%2F</url>
     <content type="text"><![CDATA[Welcome to my blogthis is my first blog]]></content>
       <tags>
-        <tag>blog</tag>
         <tag>Testing</tag>
+        <tag>blog</tag>
       </tags>
   </entry>
   <entry>
