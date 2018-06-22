@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hexo搭建博客教程]]></title>
+    <title><![CDATA[spring学习之IOC(1)]]></title>
     <url>%2F2018%2F05%2F29%2Fspring%E5%AD%A6%E4%B9%A0%E4%B9%8BIOC%2F</url>
-    <content type="text"><![CDATA[最宝贵的品质，就是坚持不懈 spring是一个企业级开发框架，为解决企业级项目开发过于复杂而创建的，框架的主要优势之一就是分层架构，允许开发者自主选择组件。spring的两大核心机制是IOC(控制反转)和AOP(面向切面编程)。]]></content>
+    <content type="text"><![CDATA[最宝贵的品质，就是坚持不懈 spring是一个企业级开发框架，为解决企业级项目开发过于复杂而创建的，框架的主要优势之一就是分层架构，允许开发者自主选择组件。spring的两大核心机制是IOC(控制反转)和AOP(面向切面编程)。 IOC是典型的工厂模式，通过工厂去注入对象。AOP则是代理模式的体现。 IOC理解IOC也叫控制反转，可以说是spring框架的灵魂，从字面意思来看，什么叫控制反转？反转的是什么？ 概念对比传统开发：需要调用对象时,通常都是由调用者在内部创建被调用对象的实例，即new一个被调用的对象。spring框架：创建对象的工作不再需要调用者来创建，而是将创建的工作交给spring去完成(即交给IOC容器创建)再交给调用者去使用。这个过程完成反转，即控制反转。 举个例子超市购物：传统开发：你自己拿着袋子带着钱出发去超市选购，然后自己带着商品回家。spring框架：你把袋子放在门口，超市配送员会把你要的商品送到你门口的袋子里，你打开袋子，就能使用你要的商品了。]]></content>
       <categories>
         <category>spring学习</category>
       </categories>

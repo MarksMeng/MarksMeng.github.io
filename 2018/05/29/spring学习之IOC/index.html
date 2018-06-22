@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="最宝贵的品质，就是坚持不懈   spring是一个企业级开发框架，为解决企业级项目开发过于复杂而创建的，框架的主要优势之一就是分层架构，允许开发者自主选择组件。spring的两大核心机制是IOC(控制反转)和AOP(面向切面编程)。">
+<meta name="description" content="最宝贵的品质，就是坚持不懈   spring是一个企业级开发框架，为解决企业级项目开发过于复杂而创建的，框架的主要优势之一就是分层架构，允许开发者自主选择组件。spring的两大核心机制是IOC(控制反转)和AOP(面向切面编程)。 IOC是典型的工厂模式，通过工厂去注入对象。AOP则是代理模式的体现。 IOC理解IOC也叫控制反转，可以说是spring框架的灵魂，从字面意思来看，什么叫控制反转">
 <meta name="keywords" content="spring学习,spring,java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo搭建博客教程">
+<meta property="og:title" content="spring学习之IOC(1)">
 <meta property="og:url" content="https://marksmeng.github.io/2018/05/29/spring学习之IOC/index.html">
 <meta property="og:site_name" content="Marks">
-<meta property="og:description" content="最宝贵的品质，就是坚持不懈   spring是一个企业级开发框架，为解决企业级项目开发过于复杂而创建的，框架的主要优势之一就是分层架构，允许开发者自主选择组件。spring的两大核心机制是IOC(控制反转)和AOP(面向切面编程)。">
+<meta property="og:description" content="最宝贵的品质，就是坚持不懈   spring是一个企业级开发框架，为解决企业级项目开发过于复杂而创建的，框架的主要优势之一就是分层架构，允许开发者自主选择组件。spring的两大核心机制是IOC(控制反转)和AOP(面向切面编程)。 IOC是典型的工厂模式，通过工厂去注入对象。AOP则是代理模式的体现。 IOC理解IOC也叫控制反转，可以说是spring框架的灵魂，从字面意思来看，什么叫控制反转">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-22T06:23:04.045Z">
+<meta property="og:updated_time" content="2018-06-22T06:50:39.083Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo搭建博客教程">
-<meta name="twitter:description" content="最宝贵的品质，就是坚持不懈   spring是一个企业级开发框架，为解决企业级项目开发过于复杂而创建的，框架的主要优势之一就是分层架构，允许开发者自主选择组件。spring的两大核心机制是IOC(控制反转)和AOP(面向切面编程)。">
+<meta name="twitter:title" content="spring学习之IOC(1)">
+<meta name="twitter:description" content="最宝贵的品质，就是坚持不懈   spring是一个企业级开发框架，为解决企业级项目开发过于复杂而创建的，框架的主要优势之一就是分层架构，允许开发者自主选择组件。spring的两大核心机制是IOC(控制反转)和AOP(面向切面编程)。 IOC是典型的工厂模式，通过工厂去注入对象。AOP则是代理模式的体现。 IOC理解IOC也叫控制反转，可以说是spring框架的灵魂，从字面意思来看，什么叫控制反转">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>Hexo搭建博客教程 | Marks</title>
+  <title>spring学习之IOC(1) | Marks</title>
   
 
 
@@ -304,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hexo搭建博客教程</h1>
+          <h1 class="post-title" itemprop="name headline">spring学习之IOC(1)</h1>
         
 
         <div class="post-meta">
@@ -380,7 +380,11 @@
 <p><blockquote class="blockquote-center">最宝贵的品质，就是坚持不懈</blockquote></p>
 <hr>
 
-<p>spring是一个企业级开发框架，为解决企业级项目开发过于复杂而创建的，框架的主要优势之一就是分层架构，允许开发者自主选择组件。<br><br><br>spring的两大核心机制是IOC(控制反转)和AOP(面向切面编程)。<br><br></p>
+<p>spring是一个企业级开发框架，为解决企业级项目开发过于复杂而创建的，框架的主要优势之一就是分层架构，允许开发者自主选择组件。<br><br>spring的两大核心机制是IOC(控制反转)和AOP(面向切面编程)。<br></p>
+<p><strong>IOC是典型的工厂模式，通过工厂去注入对象。</strong><br><br><strong>AOP则是代理模式的体现。</strong><br></p>
+<h3 id="IOC理解"><a href="#IOC理解" class="headerlink" title="IOC理解"></a>IOC理解</h3><p>IOC也叫控制反转，可以说是spring框架的灵魂，从字面意思来看，什么叫控制反转？反转的是什么？</p>
+<h4 id="概念对比"><a href="#概念对比" class="headerlink" title="概念对比"></a>概念对比</h4><p>传统开发：需要调用对象时,通常都是由调用者在内部创建被调用对象的实例，即new一个被调用的对象。<br><br>spring框架：创建对象的工作不再需要调用者来创建，而是将创建的工作交给spring去完成(即交给IOC容器创建)再交给调用者去使用。这个过程完成反转，即控制反转。<br></p>
+<h4 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h4><p>超市购物：<br><br>传统开发：你自己拿着袋子带着钱出发去超市选购，然后自己带着商品回家。<br><br>spring框架：你把袋子放在门口，超市配送员会把你要的商品送到你门口的袋子里，你打开袋子，就能使用你要的商品了。</p>
 
       
     </div>
@@ -475,8 +479,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -562,6 +575,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#IOC理解"><span class="nav-number">1.</span> <span class="nav-text">IOC理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念对比"><span class="nav-number">1.1.</span> <span class="nav-text">概念对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#举个例子"><span class="nav-number">1.2.</span> <span class="nav-text">举个例子</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
