@@ -2,6 +2,19 @@
 <search>
   <entry>
     <title><![CDATA[Hexo搭建博客教程]]></title>
+    <url>%2F2018%2F05%2F29%2Fspring%E5%AD%A6%E4%B9%A0%E4%B9%8BIOC%2F</url>
+    <content type="text"><![CDATA[最宝贵的品质，就是坚持不懈 spring是一个企业级开发框架，为解决企业级项目开发过于复杂而创建的，框架的主要优势之一就是分层架构，允许开发者自主选择组件。spring的两大核心机制是IOC(控制反转)和AOP(面向切面编程)。]]></content>
+      <categories>
+        <category>spring学习</category>
+      </categories>
+      <tags>
+        <tag>spring学习</tag>
+        <tag>spring</tag>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo搭建博客教程]]></title>
     <url>%2F2018%2F05%2F28%2FHexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[优秀的人，都是孤独的 现在越来越多的人喜欢利用Github搭建静态网站，原因当然是简单省钱。本人也利用Github搭建了本博客，折腾博客的各种配置以及功能，占据里一些时间，俗话说：好记性不如烂笔头，在此详细记录下我是如何利用hexo+github搭建静态博客以及一些相关配置问题。 准备工作 下载并安装node.js(官网去下载安装)，会默认安装npm 下载安装git(官网去下载安装) 下载安装hexo,方法：打开cmd运行npm install -g hexo（可能要翻墙） 本地搭建静态博客 新建一个文件夹，如blog 进入该文件夹内，右击运行git，输入：hexo init (生成hexo模板) 生成完模板，运行npm install 最后运行：hexo server（运行 程序，访问本地localhost:4000可以看懂啊博客已经搭建成功） 将博客与Github关联 在Github上创建名字为XXX.github.io的项目，XXX为自己的 github用户名。 打开本地的blog文件夹项目内的_config.yml配置文件，将其中的type设置为git(如下) 1234deploy: type: git repository: https://github.com/MarksMeng/MarksMeng.github.io.git branch: master 运行：npm install hexo-deployer-git -save 运行：hexo g（生成本地静态文件） 运行：hexo d（将本地静态文件推送至Github） 此时，打开浏览器，访问https://marksmeng.github.io ，即可看到模板的样式。 更新博客内容 至此博客已经搭建完毕，接下来你就可以更新内容了 更新文章 在blog目录下执行：hexo new “文章标题”,会在source-&gt;_ posts文件夹内生成一个.md文件 编辑该文件（遵循Markdown规则） 修改其实字段 title 文章的标题 data 创建日期 updated 修改日期 comments 是否开启评论（true or false） tags 标签 catagories 分类 permalink url中的名字（文件名） 编写正文内容 hexo clean 删除本地静态文件（Public 目录）,可以不执行 hexo g生成本地静态文件（Public目录） hexo d将本地静态文件推送至github 添加菜单 进入theme目录，编辑_config.yml文件，找到menu字段，在该字段添加一个字段。 123456789menu: home: / || home #about: /about/ || user tags: /tags/ || tags categories: /categories/ || th archives: /archives/ || archive #schedule: /schedule/ || calendar #sitemap: /sitemap.xml || sitemap #commonweal: /404/ || heartbeat 个性化设置现在虽然能写博客了，可是界面依然有些丑，接下来让我们美化一下自己的博客 基本信息在根目录（blog）下的_config.yml文件中可以修改标题，作者等信息。打开编辑该文件，注意：每个值的冒号后面都有一个半角的空格！ 未生效的写法：title:MarksMeng的博客 能生效的写法：title:[空格]MarksMeng的博客 主题访问主题列表，获取主题代码。进入themes目录下，进行一下操作： 下载主题（以next为例） 1git clone https://github.com/iissnan/hexo-theme-next.git（主题的地址） 打开_config.yml文件，将themes修改为hexo-theme-next（下载到的主题文件夹的名字） hexo g hexo d关于hexo-next主题下的一些个性化设置，参考：Next主题配置 主题美化文章中添加居中模块 文章在Markdown中填写如下：1&lt;blockquote class=&quot;blockquote-center&quot;&gt;优秀的人，不是不合群，而是他们合群的人里面没有你&lt;/blockquote&gt; 主页文章添加阴影效果打开\themes\hexo-theme-next\source\css_custom\custom.styl,向里面加入： 12345678// 主页文章添加阴影效果 .post &#123; margin-top: 60px; margin-bottom: 60px; padding: 25px; -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5); -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5); &#125; 鼠标点击小红心的设置将 love.js 文件添加到 \themes\next\source\js\src 文件目录下。找到 \themes\next\layout_layout.swing 文件， 在文件的后面， 标签之前 添加以下代码: 12&lt;!-- 页面点击小红心 --&gt;&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/love.js&quot;&gt;&lt;/script&gt; 搜索功能安装 hexo-generator-searchdb,在站点的根目录下执行以下命令： 1$ npm install hexo-generator-searchdb --save 编辑站点配置文件，新增以下内容到任意位置： 12345search: path: search.xml field: post format: html limit: 10000 参考文章https://thief.one/2017/03/03/Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/]]></content>
       <categories>
