@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[测试]]></title>
-    <url>%2F2018%2F09%2F19%2F%E6%B5%8B%E8%AF%95%2F</url>
+    <title><![CDATA[spring boot---第三篇 配置详解]]></title>
+    <url>%2F2018%2F09%2F21%2Fspring-boot-%E7%AC%AC%E4%B8%89%E7%AF%87-%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3%2F</url>
     <content type="text"></content>
   </entry>
   <entry>
@@ -29,6 +29,28 @@
         <tag>技术研究</tag>
         <tag>hexo</tag>
         <tag>博客搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Sping Boot---第一篇 前言]]></title>
+    <url>%2F2018%2F05%2F28%2FSping%20Boot---%E7%AC%AC%E4%B8%80%E7%AF%87%20%E5%89%8D%E8%A8%80%2F</url>
+    <content type="text"><![CDATA[点滴之水，可以穿石 &nbsp;&nbsp;&nbsp;&nbsp;好久没写文章了，最近刚好在学习spring boot，于是就强迫着自己写一下自己的学习过程。本人目前大四实习阶段，写的不好，希望各位读者多多指导。感谢感谢！ 开发环境说明 java 8 spring boot：2.0.5.RELEASE IDE：IntelliJ IDEA 2018.2.3 x64 maven：apache-maven-3.5.4 结束语学习需要持之以恒，希望自己能够坚持写下去。不要半途而废才好。加油加油！]]></content>
+      <categories>
+        <category>spring boot</category>
+      </categories>
+      <tags>
+        <tag>spring boot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Sping Boot---第二篇 第一个Springboot应用]]></title>
+    <url>%2F2018%2F05%2F28%2FSping%20Boot---%E7%AC%AC%E4%BA%8C%E7%AF%87%20%E7%AC%AC%E4%B8%80%E4%B8%AASpringboot%E5%BA%94%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[每天写一点，以后看看也是好的。 spring boot 简介概述&nbsp;&nbsp;&nbsp;&nbsp;最受Java开发者喜好的框架当属Spring，Spring也成为了在Java EE开发中真正意义上的标准，但是随着新技术的发展，脚本语言大行其道的时代（Node JS，Ruby，Groovy，Scala等），Java EE使用Spring逐渐变得笨重起来，大量的XML文件存在与项目中，繁琐的配置，整合第三方框架的配置问题，低下的开发效率和部署效率等等问题。&nbsp;&nbsp;&nbsp;&nbsp;这些问题在不断的社区反馈下，Spring团队也开发出了相应的框架：Spring Boot。Spring Boot可以说是至少近5年来Spring乃至整个Java社区最有影响力的项目之一，也被人看作是：Java EE开发的颠覆者！ spring boot 核心功能 独立运行的spring项目Spring Boot可以以jar包的形式独立运行，运行一个Spring Boot项目只需要通过java -jar xx.jar即可。 内置Servlet容器Spring Boot可选择内嵌Tomcat、Jetty或者Undertow，这样无须以war包形式部署。 提供starter简化maven配置Spring提供了一系列的starter pom来简化maven依赖加载，例如：当你使用了spring-boot-starter-web时，会自动加入相关依赖，无需你手动一个一个的添加坐标依赖。 自动配置SpringSpring Boot会根据在类路径中的jar包、类，为jar包里的类自动配置Bean，这样会极大地减少我们要使用的配置。当然，Spring Boot只是考虑了大多数的开发场景，并不是所有场景，若在实际开发中，我们需要自动配置bean，而Spring Boot没有提供支持，则可以自定义自动配置。 无代码生成和xml配置Spring Boot的神奇的不是借助于代码生成来实现的，而是通过条件注解来实现的，这是Spring 4.x提供的新特性，Spring 4.x提倡使用java配置和注解配置相结合，而Spring Boot不需要任何xml配置即可实现Sping Boot的所有配置。 工程搭建 开发环境在前面已经讲过，这里不再重复。 创建项目选择 new project这里使用Spring Initializr来构建应用，如果第一次使用可能会因为下载依赖而比较慢，请耐心等待。12345678910111213- src -main -java -com.mzh.springboot.day01 #主函数，启动类，运行它如果运行了 Tomcat、Jetty、Undertow 等容器 -Day01Application -resouces #主要的配置文件，SpringBoot启动时候会自动加载application.properties - application.properties #测试文件存放目录 -test # pom.xml 文件是Maven构建的基础，里面包含了我们所依赖JAR和Plugin的信息- pom pom依赖 我们使用了Spring Initializr来构建项目，它会自动帮我们添加好相关依赖 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt; &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt; &lt;groupId&gt;com.mzh.springboot&lt;/groupId&gt; &lt;artifactId&gt;day01&lt;/artifactId&gt; &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt; &lt;packaging&gt;jar&lt;/packaging&gt; &lt;name&gt;day01&lt;/name&gt; &lt;description&gt;Demo project for Spring Boot&lt;/description&gt; &lt;!-- Springboot的版本，大家选择时，应该选择 RELEASE 版本 --&gt; &lt;parent&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt; &lt;version&gt;2.0.5.RELEASE&lt;/version&gt; &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt; &lt;/parent&gt; &lt;properties&gt; &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt; &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt; &lt;java.version&gt;1.8&lt;/java.version&gt; &lt;/properties&gt; &lt;dependencies&gt; &lt;!-- 内嵌了tomcat服务器，开发简单的web应用，此依赖即可 --&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt; &lt;/dependency&gt; &lt;!-- 测试包 --&gt; &lt;dependency&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt; &lt;scope&gt;test&lt;/scope&gt; &lt;/dependency&gt; &lt;/dependencies&gt; &lt;build&gt; &lt;plugins&gt; &lt;plugin&gt; &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt; &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt; &lt;/plugin&gt; &lt;/plugins&gt; &lt;/build&gt;&lt;/project&gt; 主入口1234567891011 *@Author:mengzhenhua *@Date:Create in 16:22 2018/9/21 *@Modified By: */@SpringBootApplicationpublic class Day01Application &#123; public static void main(String[] args) &#123; SpringApplication.run(Day01Application.class, args); &#125;&#125; Controller12345678910111213 *@Author:mengzhenhua *@Description:IndexController *@Date:Create in 16:24 2018/9/21 *@Modified By: *///@RestController = @Controller + @ResponseBody 默认直接返回json@RestControllerpublic class IndexController &#123; @RequestMapping(value = &quot;/index&quot;, method = RequestMethod.GET) public String index() &#123; return &quot;hello,SpringBoot!&quot;; &#125;&#125; 启动应用可以看到tomcat启动成功。端口为8080 访问http://localhost:8080/index可以看到 到此第一个应用就结束了，如今网上教程很多，如有雷同请多多包含。如有错误之处可以联系笔者QQ:1245868326]]></content>
+      <categories>
+        <category>spring boot</category>
+      </categories>
+      <tags>
+        <tag>spring boot</tag>
       </tags>
   </entry>
   <entry>
