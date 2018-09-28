@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="spring boot," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="Action speak louder than words">
+<meta name="description" content="坚持是最好的品格。  spring-boot 配置详解&amp;nbsp;&amp;nbsp;相信很多人选择spring boot就是因为它省去了原来构建spring应用时那些繁多的配置文件。在spring boot应用中你只需要在pom。xml里添加模块化的Starter poms。如果不是特殊情况，默认配置就能开启各个模块的应用。 自定义属性与加载&amp;nbsp;&amp;nbsp;我们在使用spring boot 时">
+<meta name="keywords" content="spring boot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spring boot---第三篇 配置详解">
 <meta property="og:url" content="https://marksmeng.github.io/2018/09/21/spring-boot-第三篇-配置详解/index.html">
 <meta property="og:site_name" content="Marks">
-<meta property="og:description" content="Action speak louder than words">
+<meta property="og:description" content="坚持是最好的品格。  spring-boot 配置详解&amp;nbsp;&amp;nbsp;相信很多人选择spring boot就是因为它省去了原来构建spring应用时那些繁多的配置文件。在spring boot应用中你只需要在pom。xml里添加模块化的Starter poms。如果不是特殊情况，默认配置就能开启各个模块的应用。 自定义属性与加载&amp;nbsp;&amp;nbsp;我们在使用spring boot 时">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-21T07:59:02.931Z">
+<meta property="og:updated_time" content="2018-09-28T08:42:09.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring boot---第三篇 配置详解">
-<meta name="twitter:description" content="Action speak louder than words">
+<meta name="twitter:description" content="坚持是最好的品格。  spring-boot 配置详解&amp;nbsp;&amp;nbsp;相信很多人选择spring boot就是因为它省去了原来构建spring应用时那些繁多的配置文件。在spring boot应用中你只需要在pom。xml里添加模块化的Starter poms。如果不是特殊情况，默认配置就能开启各个模块的应用。 自定义属性与加载&amp;nbsp;&amp;nbsp;我们在使用spring boot 时">
 
 
 
@@ -326,6 +327,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring-boot/" itemprop="url" rel="index">
+                    <span itemprop="name">spring boot</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -353,7 +376,17 @@
       
 
       
-        
+        <p><hr></p>
+<p><blockquote class="blockquote-center">坚持是最好的品格。</blockquote></p>
+<p><hr></p>
+<h3 id="spring-boot-配置详解"><a href="#spring-boot-配置详解" class="headerlink" title="spring-boot 配置详解"></a>spring-boot 配置详解</h3><p>&nbsp;&nbsp;相信很多人选择spring boot就是因为它省去了原来构建spring应用时那些繁多的配置文件。在spring boot应用中你只需要在pom。xml里添加模块化的Starter poms。如果不是特殊情况，默认配置就能开启各个模块的应用。</p>
+<h4 id="自定义属性与加载"><a href="#自定义属性与加载" class="headerlink" title="自定义属性与加载"></a>自定义属性与加载</h4><p>&nbsp;&nbsp;我们在使用spring boot 时，有时候会用到自定义的属性。我们可以用如下方式直接定义。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">com.mzh.blog.name=meng</span><br><span class="line">com.mzh.blog.title = spring boot</span><br></pre></td></tr></table></figure></p>
+<p>然后通过value(“${com.mzh.blog.name}”)注解来加载对应的配置属性。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">public class BlogProperties &#123;</span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;com.mzh.blog.name&#125;&quot;)</span><br><span class="line">    private  String name;</span><br><span class="line"></span><br><span class="line">    @Value(&quot;$&#123;com.mzh.blog.title&#125;&quot;)</span><br><span class="line">    private  String title;</span><br><span class="line">    //省略getter和setter</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>相当于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class BlogProperties &#123;</span><br><span class="line"></span><br><span class="line">    private  String name = mzh ;</span><br><span class="line">    </span><br><span class="line">    private  String title = spring boot ;</span><br><span class="line">    //省略getter和setter</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="多环境配置"><a href="#多环境配置" class="headerlink" title="多环境配置"></a>多环境配置</h4><p>在开发过程中我们可能要用到不同的开发环境例如：开发环境、测试环境、生产环境。各个环境之间配置可能有些不同。如果在打包时需要频繁修改配置的话，不仅耗时耗力，还容易出错。</p>
+<p>对于多环境的配置，各种项目构建工具或是框架的基本思路是一致的，通过配置多份不同环境的配置文件，再通过打包命令指定需要打包的内容之后进行区分打包，Spring Boot也不例外，或者说更加简单。</p>
+<p>在Spring Boot中多环境配置文件名需要满足application-{profile}.properties的格式，其中{profile}对应你的环境标识，比如：<br> -application-dev.properties：开发环境<br> -application-test.properties：测试环境<br> -application-prod.properties：生产环境<br>至于哪个具体的配置文件会被加载，需要在application.properties文件中通过spring.profiles.active属性来设置，其值对应{profile}值。<br>如：spring.profiles.active=test就会加载application-test.properties配置文件内容</p>
+
       
     </div>
     
@@ -367,6 +400,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/spring-boot/" rel="tag"># spring boot</a>
+          
+        </div>
       
 
       
@@ -437,8 +476,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -524,6 +572,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#spring-boot-配置详解"><span class="nav-number">1.</span> <span class="nav-text">spring-boot 配置详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义属性与加载"><span class="nav-number">1.1.</span> <span class="nav-text">自定义属性与加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多环境配置"><span class="nav-number">1.2.</span> <span class="nav-text">多环境配置</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
