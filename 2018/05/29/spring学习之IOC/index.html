@@ -389,38 +389,10 @@
 <hr>
 
 <p>1、创建student类</p>
-<pre><code>public class Student {
-    private int id;
-    private String name;
-    private int age;
-
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public int getAge() {
-        return age;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
-}
-</code></pre><p>在主函数中创建这个类</p>
-<h5 id="传统方式"><a href="#传统方式" class="headerlink" title="传统方式"></a>传统方式</h5><pre><code>public class Test {
-    public static void main(String[] args) {
-        Student student = new Student();
-        System.out.println(student.getName());
-    }
-}
-</code></pre><h4 id="通过spring-IOC来创建"><a href="#通过spring-IOC来创建" class="headerlink" title="通过spring IOC来创建"></a>通过spring IOC来创建</h4><h5 id="前期准备："><a href="#前期准备：" class="headerlink" title="前期准备："></a>前期准备：</h5><ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class Student &#123;</span><br><span class="line">    private int id;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public int getId() &#123;</span><br><span class="line">        return id;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setId(int id) &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在主函数中创建这个类</p>
+<h5 id="传统方式"><a href="#传统方式" class="headerlink" title="传统方式"></a>传统方式</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Student student = new Student();</span><br><span class="line">        System.out.println(student.getName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="通过spring-IOC来创建"><a href="#通过spring-IOC来创建" class="headerlink" title="通过spring IOC来创建"></a>通过spring IOC来创建</h4><h5 id="前期准备："><a href="#前期准备：" class="headerlink" title="前期准备："></a>前期准备：</h5><ol>
 <li>添加spring相关jar包</li>
 <li>配置spring相关配置文件，可自定义为spring.xml</li>
 <li>调用api</li>
@@ -429,85 +401,29 @@
 <li>在配置文件（例如spring.xml）中配置bean标签，IOC通过bean标签来创建对象</li>
 <li>调用api获取IOC创建的对象</li>
 </ol>
-<h5 id="代码（这里使用无参构造）"><a href="#代码（这里使用无参构造）" class="headerlink" title="代码（这里使用无参构造）"></a>代码（这里使用无参构造）</h5><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
-
-     &lt;!-- 配置student对象--&gt;
-     &lt;bean id=&quot;stu&quot; class=&quot;com.marks.entity.Student&quot;&gt;&lt;/bean&gt;
-
-&lt;/beans&gt;
-</code></pre><h6 id="1、配置一个bean标签"><a href="#1、配置一个bean标签" class="headerlink" title="1、配置一个bean标签"></a>1、配置一个bean标签</h6><p>id：对象名<br><br>class：对象的模板类</p>
+<h5 id="代码（这里使用无参构造）"><a href="#代码（这里使用无参构造）" class="headerlink" title="代码（这里使用无参构造）"></a>代码（这里使用无参构造）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">     &lt;!-- 配置student对象--&gt;</span><br><span class="line">     &lt;bean id=&quot;stu&quot; class=&quot;com.marks.entity.Student&quot;&gt;&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<h6 id="1、配置一个bean标签"><a href="#1、配置一个bean标签" class="headerlink" title="1、配置一个bean标签"></a>1、配置一个bean标签</h6><p>id：对象名<br><br>class：对象的模板类</p>
 <h6 id="2、调用api获取对象"><a href="#2、调用api获取对象" class="headerlink" title="2、调用api获取对象"></a>2、调用api获取对象</h6><p>spring提供了两种方式获取对象：id和运行时类。<br></p>
 <p>1、通过id获取对象</p>
-<pre><code>public class Test {
-    public static void main(String[] args) {
-        //1.加载spring.xml配置文件
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;spring.xml&quot;);
-        //2.通过id值获取对象
-        Student stu = (Student) applicationContext.getBean(&quot;stu&quot;);
-        System.out.println(stu);
-    }
-}
-</code></pre><ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //1.加载spring.xml配置文件</span><br><span class="line">        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;spring.xml&quot;);</span><br><span class="line">        //2.通过id值获取对象</span><br><span class="line">        Student stu = (Student) applicationContext.getBean(&quot;stu&quot;);</span><br><span class="line">        System.out.println(stu);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
 <li>加载配置文件spring.xml,生成ApplicationContext对象</li>
 <li>调用ApplicationContext对象的getBean方法获取对象，参数为配置中的id值</li>
 </ul>
 <p>程序在加载spring.xml时创建stu对象，通过反射机制调用无参构造函数，所有交给IOC管理的对象都必须有无参构造函数。<br><br>运行一下可以看到</p>
-<pre><code>Student [id=0, name=null, age=0]
-</code></pre><p>这是因为调用无参构造没有给对象属性赋值，那么怎么给他赋值呢？只需要在配置文件（spring.xml）中进行相关配置即可。</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
-
-     &lt;!-- 配置student对象 --&gt;
-     &lt;bean id=&quot;stu&quot; class=&quot;com.marks.entity.Student&quot;&gt;
-        &lt;!-- 对属性进行赋值 --&gt;
-        &lt;property name=&quot;id&quot; value=&quot;1&quot;&gt;&lt;/property&gt;
-        &lt;property name=&quot;name&quot; value=&quot;张三&quot;&gt;&lt;/property&gt;
-        &lt;property name=&quot;age&quot; value=&quot;23&quot;&gt;&lt;/property&gt;
-     &lt;/bean&gt;
-
-&lt;/beans&gt;
-</code></pre><p>再次运行可以看到</p>
-<pre><code>Student [id=1, name=张三, age=23]
-</code></pre><p>那么IOC是怎么给对象进行赋值的呢？<br><br>spring通过调用对象类的每个属性的setter方法来完成属性的赋值。因此实体类的属性都必须有setter方法，否则加载时就会报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Student [id=0, name=null, age=0]</span><br></pre></td></tr></table></figure>
+<p>这是因为调用无参构造没有给对象属性赋值，那么怎么给他赋值呢？只需要在配置文件（spring.xml）中进行相关配置即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">     &lt;!-- 配置student对象 --&gt;</span><br><span class="line">     &lt;bean id=&quot;stu&quot; class=&quot;com.marks.entity.Student&quot;&gt;</span><br><span class="line">        &lt;!-- 对属性进行赋值 --&gt;</span><br><span class="line">        &lt;property name=&quot;id&quot; value=&quot;1&quot;&gt;&lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;name&quot; value=&quot;张三&quot;&gt;&lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;age&quot; value=&quot;23&quot;&gt;&lt;/property&gt;</span><br><span class="line">     &lt;/bean&gt;</span><br><span class="line">     </span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<p>再次运行可以看到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Student [id=1, name=张三, age=23]</span><br></pre></td></tr></table></figure>
+<p>那么IOC是怎么给对象进行赋值的呢？<br><br>spring通过调用对象类的每个属性的setter方法来完成属性的赋值。因此实体类的属性都必须有setter方法，否则加载时就会报错。</p>
 <p>2、通过运行时类来加载</p>
-<pre><code>public class Test {
-    public static void main(String[] args) {
-        //1.加载spring.xml配置文件
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;spring.xml&quot;);
-        //2.通过运行时类获取对象
-        Student stu = applicationContext.getBean(Student.class);
-        System.out.println(stu);
-    }
-}
-</code></pre><p>但是当配置文件sprin.xml里配置了两个Student类，程序就会报错。IOC只能返回一个唯一的bean。<br></p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
-    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        //1.加载spring.xml配置文件</span><br><span class="line">        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(&quot;spring.xml&quot;);</span><br><span class="line">        //2.通过运行时类获取对象</span><br><span class="line">        Student stu = applicationContext.getBean(Student.class);</span><br><span class="line">        System.out.println(stu);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是当配置文件sprin.xml里配置了两个Student类，程序就会报错。IOC只能返回一个唯一的bean。<br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">     &lt;bean id=&quot;stu&quot; class=&quot;com.marks.entity.Student&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;id&quot; value=&quot;1&quot;&gt;&lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;name&quot;&gt;</span><br><span class="line">            &lt;value&gt;&lt;![CDATA[&lt;张三&gt;]]&gt;&lt;/value&gt;</span><br><span class="line">        &lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;age&quot; value=&quot;23&quot;&gt;&lt;/property&gt;</span><br><span class="line">     &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">     &lt;bean id=&quot;stu2&quot; class=&quot;com.marks.entity.Student&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;id&quot; value=&quot;1&quot;&gt;&lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;name&quot; value=&quot;李四&quot;&gt;&lt;/property&gt;</span><br><span class="line">        &lt;property name=&quot;age&quot; value=&quot;23&quot;&gt;&lt;/property&gt;</span><br><span class="line">     &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<p>spring.xml进行如上配置时，在使用运行时加载类就会出错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">no qualifying bean of type [com.marks.entity.Student] is disable</span><br></pre></td></tr></table></figure>
 
-     &lt;bean id=&quot;stu&quot; class=&quot;com.marks.entity.Student&quot;&gt;
-        &lt;property name=&quot;id&quot; value=&quot;1&quot;&gt;&lt;/property&gt;
-        &lt;property name=&quot;name&quot;&gt;
-            &lt;value&gt;&lt;![CDATA[&lt;张三&gt;]]&gt;&lt;/value&gt;
-        &lt;/property&gt;
-        &lt;property name=&quot;age&quot; value=&quot;23&quot;&gt;&lt;/property&gt;
-     &lt;/bean&gt;
-
-     &lt;bean id=&quot;stu2&quot; class=&quot;com.marks.entity.Student&quot;&gt;
-        &lt;property name=&quot;id&quot; value=&quot;1&quot;&gt;&lt;/property&gt;
-        &lt;property name=&quot;name&quot; value=&quot;李四&quot;&gt;&lt;/property&gt;
-        &lt;property name=&quot;age&quot; value=&quot;23&quot;&gt;&lt;/property&gt;
-     &lt;/bean&gt;
-
-&lt;/beans&gt;
-</code></pre><p>spring.xml进行如上配置时，在使用运行时加载类就会出错。</p>
-<pre><code>no qualifying bean of type [com.marks.entity.Student] is disable 
-</code></pre>
       
     </div>
     
@@ -634,7 +550,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
