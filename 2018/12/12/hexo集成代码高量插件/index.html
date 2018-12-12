@@ -87,7 +87,7 @@
 <meta property="og:description" content="hexo集成代码高量插件    hljs.initHighlightingOnLoad();   public static String POST(String url, String jsonBody) throws IOException {    url = filterWrongUrl(url);    RequestBody body = RequestBody.create(MEDI">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.wailian.work/images/2018/12/04/2.jpg">
-<meta property="og:updated_time" content="2018-12-12T07:09:49.143Z">
+<meta property="og:updated_time" content="2018-12-12T07:16:12.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Marks">
 <meta name="twitter:description" content="hexo集成代码高量插件    hljs.initHighlightingOnLoad();   public static String POST(String url, String jsonBody) throws IOException {    url = filterWrongUrl(url);    RequestBody body = RequestBody.create(MEDI">
@@ -361,8 +361,8 @@
 <script src="/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-
-<pre><code>public static String POST(String url, String jsonBody) throws IOException {
+<pre><code class="java">
+public static String POST(String url, String jsonBody) throws IOException {
    url = filterWrongUrl(url);
    RequestBody body = RequestBody.create(MEDIA_JSON, jsonBody);
    Request request = new Request.Builder().url(url).post(body).build();
@@ -377,15 +377,16 @@
          return new String(response.body().bytes());
       } catch (IOException e) {
          e.printStackTrace();
-         logger.error(&quot;数据读取io异常！&quot;, e);
+         logger.error("数据读取io异常！", e);
       }
    } else {
-      logger.info(&quot;访问资源不存在，或者服务器异常！&quot;);
+      logger.info("访问资源不存在，或者服务器异常！");
       errorLogInfo(returnCode, response.request().url().url().toString());
    }
    return null;
 }
 </code></pre>
+
       
     </div>
     
