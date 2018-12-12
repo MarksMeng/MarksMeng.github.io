@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="hexo集成代码高量插件    hljs.initHighlightingOnLoad();   1234567891011121314151617181920212223public static String POST(String url, String jsonBody) throws IOException &amp;#123;   url = filterWrongUrl(url);   Re">
+<meta name="description" content="hexo集成代码高量插件    hljs.initHighlightingOnLoad();   public static String POST(String url, String jsonBody) throws IOException {    url = filterWrongUrl(url);    RequestBody body = RequestBody.create(MEDI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Marks">
 <meta property="og:url" content="https://marksmeng.github.io/2018/12/12/hexo集成代码高量插件/index.html">
 <meta property="og:site_name" content="Marks">
-<meta property="og:description" content="hexo集成代码高量插件    hljs.initHighlightingOnLoad();   1234567891011121314151617181920212223public static String POST(String url, String jsonBody) throws IOException &amp;#123;   url = filterWrongUrl(url);   Re">
+<meta property="og:description" content="hexo集成代码高量插件    hljs.initHighlightingOnLoad();   public static String POST(String url, String jsonBody) throws IOException {    url = filterWrongUrl(url);    RequestBody body = RequestBody.create(MEDI">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.wailian.work/images/2018/12/04/2.jpg">
 <meta property="og:updated_time" content="2018-12-12T07:09:49.143Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Marks">
-<meta name="twitter:description" content="hexo集成代码高量插件    hljs.initHighlightingOnLoad();   1234567891011121314151617181920212223public static String POST(String url, String jsonBody) throws IOException &amp;#123;   url = filterWrongUrl(url);   Re">
+<meta name="twitter:description" content="hexo集成代码高量插件    hljs.initHighlightingOnLoad();   public static String POST(String url, String jsonBody) throws IOException {    url = filterWrongUrl(url);    RequestBody body = RequestBody.create(MEDI">
 <meta name="twitter:image" content="http://www.wailian.work/images/2018/12/04/2.jpg">
 
 
@@ -362,8 +362,30 @@
 <script>hljs.initHighlightingOnLoad();</script>
 
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public static String POST(String url, String jsonBody) throws IOException &#123;</span><br><span class="line">   url = filterWrongUrl(url);</span><br><span class="line">   RequestBody body = RequestBody.create(MEDIA_JSON, jsonBody);</span><br><span class="line">   Request request = new Request.Builder().url(url).post(body).build();</span><br><span class="line">   System.out.println(request);</span><br><span class="line">   Response response = ReqExecute(request);</span><br><span class="line">   if (!response.isSuccessful()) &#123;</span><br><span class="line">      throw new IOException();</span><br><span class="line">   &#125;</span><br><span class="line">   int returnCode = response.code();</span><br><span class="line">   if (HTTP_OK == returnCode) &#123;</span><br><span class="line">      try &#123;</span><br><span class="line">         return new String(response.body().bytes());</span><br><span class="line">      &#125; catch (IOException e) &#123;</span><br><span class="line">         e.printStackTrace();</span><br><span class="line">         logger.error(&quot;数据读取io异常！&quot;, e);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125; else &#123;</span><br><span class="line">      logger.info(&quot;访问资源不存在，或者服务器异常！&quot;);</span><br><span class="line">      errorLogInfo(returnCode, response.request().url().url().toString());</span><br><span class="line">   &#125;</span><br><span class="line">   return null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<pre><code>public static String POST(String url, String jsonBody) throws IOException {
+   url = filterWrongUrl(url);
+   RequestBody body = RequestBody.create(MEDIA_JSON, jsonBody);
+   Request request = new Request.Builder().url(url).post(body).build();
+   System.out.println(request);
+   Response response = ReqExecute(request);
+   if (!response.isSuccessful()) {
+      throw new IOException();
+   }
+   int returnCode = response.code();
+   if (HTTP_OK == returnCode) {
+      try {
+         return new String(response.body().bytes());
+      } catch (IOException e) {
+         e.printStackTrace();
+         logger.error(&quot;数据读取io异常！&quot;, e);
+      }
+   } else {
+      logger.info(&quot;访问资源不存在，或者服务器异常！&quot;);
+      errorLogInfo(returnCode, response.request().url().url().toString());
+   }
+   return null;
+}
+</code></pre>
       
     </div>
     

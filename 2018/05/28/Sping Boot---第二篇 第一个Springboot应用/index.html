@@ -398,12 +398,102 @@
 <h3 id="工程搭建"><a href="#工程搭建" class="headerlink" title="工程搭建"></a>工程搭建</h3><p><hr><br>    开发环境在前面已经讲过，这里不再重复。</p>
 <hr>
 
-<h4 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h4><p>选择 <strong>new project</strong><br><img src="/2018/05/28/Sping Boot---第二篇 第一个Springboot应用/newproject_1537516925_4275.png" alt="new project"><br>这里使用Spring Initializr来构建应用，如果第一次使用可能会因为下载依赖而比较慢，请耐心等待。<br><img src="/2018/05/28/Sping Boot---第二篇 第一个Springboot应用/项目结构_1537517269_28083.png" alt="项目结构"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">- src</span><br><span class="line">    -main</span><br><span class="line">        -java</span><br><span class="line">            -com.mzh.springboot.day01</span><br><span class="line">                #主函数，启动类，运行它如果运行了 Tomcat、Jetty、Undertow 等容器</span><br><span class="line">                -Day01Application</span><br><span class="line">        -resouces</span><br><span class="line">            #主要的配置文件，SpringBoot启动时候会自动加载application.properties</span><br><span class="line">            - application.properties</span><br><span class="line">    #测试文件存放目录</span><br><span class="line">    -test</span><br><span class="line"> # pom.xml 文件是Maven构建的基础，里面包含了我们所依赖JAR和Plugin的信息</span><br><span class="line">- pom</span><br></pre></td></tr></table></figure></p>
-<p>pom依赖</p>
+<h4 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h4><p>选择 <strong>new project</strong><br><img src="/2018/05/28/Sping Boot---第二篇 第一个Springboot应用/newproject_1537516925_4275.png" alt="new project"><br>这里使用Spring Initializr来构建应用，如果第一次使用可能会因为下载依赖而比较慢，请耐心等待。<br><img src="/2018/05/28/Sping Boot---第二篇 第一个Springboot应用/项目结构_1537517269_28083.png" alt="项目结构"></p>
+<pre><code>- src
+    -main
+        -java
+            -com.mzh.springboot.day01
+                #主函数，启动类，运行它如果运行了 Tomcat、Jetty、Undertow 等容器
+                -Day01Application
+        -resouces
+            #主要的配置文件，SpringBoot启动时候会自动加载application.properties
+            - application.properties
+    #测试文件存放目录
+    -test
+ # pom.xml 文件是Maven构建的基础，里面包含了我们所依赖JAR和Plugin的信息
+- pom
+</code></pre><p>pom依赖</p>
 <p><hr><br>我们使用了Spring Initializr来构建项目，它会自动帮我们添加好相关依赖</p>
-<p><hr><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;</span><br><span class="line">    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line"></span><br><span class="line">    &lt;groupId&gt;com.mzh.springboot&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;day01&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">    &lt;packaging&gt;jar&lt;/packaging&gt;</span><br><span class="line"></span><br><span class="line">    &lt;name&gt;day01&lt;/name&gt;</span><br><span class="line">    &lt;description&gt;Demo project for Spring Boot&lt;/description&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- Springboot的版本，大家选择时，应该选择 RELEASE 版本 --&gt;</span><br><span class="line">    &lt;parent&gt;</span><br><span class="line">        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;2.0.5.RELEASE&lt;/version&gt;</span><br><span class="line">        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;</span><br><span class="line">    &lt;/parent&gt;</span><br><span class="line"></span><br><span class="line">    &lt;properties&gt;</span><br><span class="line">        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">        &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;</span><br><span class="line">        &lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">    &lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">    &lt;dependencies&gt;</span><br><span class="line">        &lt;!-- 内嵌了tomcat服务器，开发简单的web应用，此依赖即可  --&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">        &lt;!-- 测试包 --&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">            &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">        &lt;/dependency&gt;</span><br><span class="line">    &lt;/dependencies&gt;</span><br><span class="line"></span><br><span class="line">    &lt;build&gt;</span><br><span class="line">        &lt;plugins&gt;</span><br><span class="line">            &lt;plugin&gt;</span><br><span class="line">                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">            &lt;/plugin&gt;</span><br><span class="line">        &lt;/plugins&gt;</span><br><span class="line">    &lt;/build&gt;</span><br><span class="line"></span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure></p>
-<p>主入口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> *@Author:mengzhenhua</span><br><span class="line"> *@Date:Create in 16:22 2018/9/21</span><br><span class="line"> *@Modified By:</span><br><span class="line"> */</span><br><span class="line">@SpringBootApplication</span><br><span class="line">public class Day01Application &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(Day01Application.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Controller<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> *@Author:mengzhenhua</span><br><span class="line"> *@Description:IndexController</span><br><span class="line"> *@Date:Create in 16:24 2018/9/21</span><br><span class="line"> *@Modified By:</span><br><span class="line"> */</span><br><span class="line">//@RestController = @Controller + @ResponseBody 默认直接返回json</span><br><span class="line">@RestController</span><br><span class="line">public class IndexController &#123;</span><br><span class="line">    @RequestMapping(value = &quot;/index&quot;, method = RequestMethod.GET)</span><br><span class="line">    public String index() &#123;</span><br><span class="line">        return &quot;hello,SpringBoot!&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><hr></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+         xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+
+    &lt;groupId&gt;com.mzh.springboot&lt;/groupId&gt;
+    &lt;artifactId&gt;day01&lt;/artifactId&gt;
+    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+    &lt;packaging&gt;jar&lt;/packaging&gt;
+
+    &lt;name&gt;day01&lt;/name&gt;
+    &lt;description&gt;Demo project for Spring Boot&lt;/description&gt;
+
+    &lt;!-- Springboot的版本，大家选择时，应该选择 RELEASE 版本 --&gt;
+    &lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;2.0.5.RELEASE&lt;/version&gt;
+        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+    &lt;/parent&gt;
+
+    &lt;properties&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+        &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
+        &lt;java.version&gt;1.8&lt;/java.version&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencies&gt;
+        &lt;!-- 内嵌了tomcat服务器，开发简单的web应用，此依赖即可  --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;!-- 测试包 --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+
+&lt;/project&gt;
+</code></pre><p>主入口</p>
+<pre><code class="/**"> *@Author:mengzhenhua
+ *@Date:Create in 16:22 2018/9/21
+ *@Modified By:
+ */
+@SpringBootApplication
+public class Day01Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Day01Application.class, args);
+    }
+}
+</code></pre>
+<p>Controller</p>
+<pre><code class="/**"> *@Author:mengzhenhua
+ *@Description:IndexController
+ *@Date:Create in 16:24 2018/9/21
+ *@Modified By:
+ */
+//@RestController = @Controller + @ResponseBody 默认直接返回json
+@RestController
+public class IndexController {
+    @RequestMapping(value = &quot;/index&quot;, method = RequestMethod.GET)
+    public String index() {
+        return &quot;hello,SpringBoot!&quot;;
+    }
+}
+</code></pre>
 <p>启动应用<br><img src="/2018/05/28/Sping Boot---第二篇 第一个Springboot应用/启动应用_1537518470_28337.png" alt="启动应用"><br>可以看到tomcat启动成功。端口为8080</p>
 <p>访问<a href="http://localhost:8080/index" target="_blank" rel="noopener">http://localhost:8080/index</a>可以看到<br><img src="/2018/05/28/Sping Boot---第二篇 第一个Springboot应用/成功界面_1537518636_23330.png" alt="成功界面"></p>
 <p>到此第一个应用就结束了，如今网上教程很多，如有雷同请多多包含。如有错误之处可以联系笔者<br>QQ:1245868326</p>
@@ -437,8 +527,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/28/Sping Boot---第一篇 前言/" rel="next" title="Sping Boot---第一篇 前言">
-                <i class="fa fa-chevron-left"></i> Sping Boot---第一篇 前言
+              <a href="/2018/05/27/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -447,8 +537,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/28/Hexo博客搭建教程/" rel="prev" title="Hexo搭建博客教程">
-                Hexo搭建博客教程 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/28/Sping Boot---第一篇 前言/" rel="prev" title="Sping Boot---第一篇 前言">
+                Sping Boot---第一篇 前言 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
