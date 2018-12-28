@@ -12,17 +12,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[spring学习之IOC---第二篇]]></title>
-    <url>%2F2018%2F05%2F29%2Fspring%E5%AD%A6%E4%B9%A0%E4%B9%8BIOC---%E7%AC%AC%E4%BA%8C%E7%AF%87%2F</url>
-    <content type="text"><![CDATA[只是想沉浸在代码的海洋毕竟电脑是一个单纯的小孩只要顺着他的小脾气就好比起带着面具的大人要好很多&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;—/大名叫李鑫/ ​ 上一篇谈了一下spring和传统开发的区别，没有过多的深入spring里去。本篇会详细讲一下spring是如何创建bean的。 回顾123456789public class Test &#123; public static void main(String[] args) &#123; //1.加载spring.xml配置文件 ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml"); //2.通过id值获取对象 Student stu = (Student) applicationContext.getBean("stu"); System.out.println(stu); &#125;&#125; 在上一篇中，我们通过id获取对象时主要在关注第二步通过id获取对象，在本篇中我们将关注点放在第一步加载spring配置文件，来看看spring是如何自动创建bean的。 IOC容器设计 主要两条线 BeanFactory一条是以BeanFactory到HierarchicalBeanFactory再到ConfigurableBeanFactory。BeanFactory作为IOC容器的基本实现，譬如getBean() 可以从容器中拿到对应bean。而HierarchicalBeanFactory 则增加了getParentBeanFactory()可以获取父级容器。ConfigurableBeanFactory定义了一些配置功能。总起来我们可以把这条线定义为IOC容器的基本实现。 ApplicationContext一条是以ApplicationContext为核心的接口设计。其下游接口ConfigurableApplicationContext和WebApplicationContext是相较于BeanFactory的更高级实现。 在开发中应用最多的应该就是ApplicationContext了。 具体实现我们来用回顾里的代码，来窥探下AplicationContext的秘密。]]></content>
-      <categories>
-        <category>spring</category>
-      </categories>
-      <tags>
-        <tag>spring</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[spring学习之IOC---第一篇]]></title>
     <url>%2F2018%2F05%2F29%2Fspring%E5%AD%A6%E4%B9%A0%E4%B9%8BIOC---%E7%AC%AC%E4%B8%80%E7%AF%87%2F</url>
     <content type="text"><![CDATA[最宝贵的品质，就是坚持不懈 spring是一个企业级开发框架，为解决企业级项目开发过于复杂而创建的，框架的主要优势之一就是分层架构，允许开发者自主选择组件。spring的两大核心机制是IOC(控制反转)和AOP(面向切面编程)。 IOC是典型的工厂模式，通过工厂去注入对象。AOP则是代理模式的体现。 IOC理解IOC也叫控制反转，可以说是spring框架的灵魂，从字面意思来看，什么叫控制反转？反转的是什么？ 概念对比传统开发：需要调用对象时,通常都是由调用者在内部创建被调用对象的实例，即new一个被调用的对象。spring框架：创建对象的工作不再需要调用者来创建，而是将创建的工作交给spring去完成(即交给IOC容器创建)再交给调用者去使用。这个过程完成反转，即控制反转。 举个例子超市购物：传统开发：你自己拿着袋子带着钱出发去超市选购，然后自己带着商品回家。spring框架：你把袋子放在门口，超市配送员会把你要的商品送到你门口的袋子里，你打开袋子，就能使用你要的商品了。 代码展示下面通过创建一个student类来理解IOC的使用 1、创建student类 123456789101112131415161718192021222324public class Student &#123; private int id; private String name; private int age; public int getId() &#123; return id; &#125; public void setId(int id) &#123; this.id = id; &#125; public String getName() &#123; return name; &#125; public void setName(String name) &#123; this.name = name; &#125; public int getAge() &#123; return age; &#125; public void setAge(int age) &#123; this.age = age; &#125;&#125; 在主函数中创建这个类 传统方式123456public class Test &#123; public static void main(String[] args) &#123; Student student = new Student(); System.out.println(student.getName()); &#125;&#125; 通过spring IOC来创建前期准备： 添加spring相关jar包 配置spring相关配置文件，可自定义为spring.xml 调用api 思路： 在配置文件（例如spring.xml）中配置bean标签，IOC通过bean标签来创建对象 调用api获取IOC创建的对象 代码（这里使用无参构造）123456789&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"&gt; &lt;!-- 配置student对象--&gt; &lt;bean id="stu" class="com.marks.entity.Student"&gt;&lt;/bean&gt;&lt;/beans&gt; 1、配置一个bean标签id：对象名class：对象的模板类 2、调用api获取对象spring提供了两种方式获取对象：id和运行时类。 1、通过id获取对象 123456789public class Test &#123; public static void main(String[] args) &#123; //1.加载spring.xml配置文件 ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml"); //2.通过id值获取对象 Student stu = (Student) applicationContext.getBean("stu"); System.out.println(stu); &#125;&#125; 加载配置文件spring.xml,生成ApplicationContext对象 调用ApplicationContext对象的getBean方法获取对象，参数为配置中的id值 程序在加载spring.xml时创建stu对象，通过反射机制调用无参构造函数，所有交给IOC管理的对象都必须有无参构造函数。运行一下可以看到 1Student [id=0, name=null, age=0] 这是因为调用无参构造没有给对象属性赋值，那么怎么给他赋值呢？只需要在配置文件（spring.xml）中进行相关配置即可。 1234567891011121314&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"&gt; &lt;!-- 配置student对象 --&gt; &lt;bean id="stu" class="com.marks.entity.Student"&gt; &lt;!-- 对属性进行赋值 --&gt; &lt;property name="id" value="1"&gt;&lt;/property&gt; &lt;property name="name" value="张三"&gt;&lt;/property&gt; &lt;property name="age" value="23"&gt;&lt;/property&gt; &lt;/bean&gt; &lt;/beans&gt; 再次运行可以看到 1Student [id=1, name=张三, age=23] 那么IOC是怎么给对象进行赋值的呢？spring通过调用对象类的每个属性的setter方法来完成属性的赋值。因此实体类的属性都必须有setter方法，否则加载时就会报错。 2、通过运行时类来加载 123456789public class Test &#123; public static void main(String[] args) &#123; //1.加载spring.xml配置文件 ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml"); //2.通过运行时类获取对象 Student stu = applicationContext.getBean(Student.class); System.out.println(stu); &#125;&#125; 但是当配置文件sprin.xml里配置了两个Student类，程序就会报错。IOC只能返回一个唯一的bean。 1234567891011121314151617181920&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"&gt; &lt;bean id="stu" class="com.marks.entity.Student"&gt; &lt;property name="id" value="1"&gt;&lt;/property&gt; &lt;property name="name"&gt; &lt;value&gt;&lt;![CDATA[&lt;张三&gt;]]&gt;&lt;/value&gt; &lt;/property&gt; &lt;property name="age" value="23"&gt;&lt;/property&gt; &lt;/bean&gt; &lt;bean id="stu2" class="com.marks.entity.Student"&gt; &lt;property name="id" value="1"&gt;&lt;/property&gt; &lt;property name="name" value="李四"&gt;&lt;/property&gt; &lt;property name="age" value="23"&gt;&lt;/property&gt; &lt;/bean&gt;&lt;/beans&gt; spring.xml进行如上配置时，在使用运行时加载类就会出错。 1no qualifying bean of type [com.marks.entity.Student] is disable]]></content>
@@ -34,14 +23,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Sping Boot---第一篇 前言]]></title>
-    <url>%2F2018%2F05%2F28%2FSping%20Boot---%E7%AC%AC%E4%B8%80%E7%AF%87%20%E5%89%8D%E8%A8%80%2F</url>
-    <content type="text"><![CDATA[点滴之水，可以穿石 &nbsp;&nbsp;&nbsp;&nbsp;好久没写文章了，最近刚好在学习spring boot，于是就强迫着自己写一下自己的学习过程。本人目前大四实习阶段，写的不好，希望各位读者多多指导。感谢感谢！ 开发环境说明 java 8 spring boot：2.0.5.RELEASE IDE：IntelliJ IDEA 2018.2.3 x64 maven：apache-maven-3.5.4 结束语学习需要持之以恒，希望自己能够坚持写下去。不要半途而废才好。加油加油！]]></content>
+    <title><![CDATA[spring学习之IOC---第二篇]]></title>
+    <url>%2F2018%2F05%2F29%2Fspring%E5%AD%A6%E4%B9%A0%E4%B9%8BIOC---%E7%AC%AC%E4%BA%8C%E7%AF%87%2F</url>
+    <content type="text"><![CDATA[只是想沉浸在代码的海洋毕竟电脑是一个单纯的小孩只要顺着他的小脾气就好比起带着面具的大人要好很多&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;—/大名叫李鑫/ ​ 上一篇谈了一下spring和传统开发的区别，没有过多的深入spring里去。本篇会详细讲一下spring是如何创建bean的。 回顾 123456789public class Test &#123; public static void main(String[] args) &#123; //1.加载spring.xml配置文件 ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml"); //2.通过id值获取对象 Student stu = (Student) applicationContext.getBean("stu"); System.out.println(stu); &#125;&#125; 在上一篇中，我们通过id获取对象时主要在关注第二步通过id获取对象，在本篇中我们将关注点放在第一步加载spring配置文件，来看看spring是如何自动创建bean的。 IOC容器设计 主要两条线 BeanFactory一条是以BeanFactory到HierarchicalBeanFactory再到ConfigurableBeanFactory。BeanFactory作为IOC容器的基本实现，譬如getBean() 可以从容器中拿到对应bean。而HierarchicalBeanFactory 则增加了getParentBeanFactory()可以获取父级容器。ConfigurableBeanFactory定义了一些配置功能。总起来我们可以把这条线定义为IOC容器的基本实现。 ApplicationContext一条是以ApplicationContext为核心的接口设计。其下游接口ConfigurableApplicationContext和WebApplicationContext是相较于BeanFactory的更高级实现。 在开发中应用最多的应该就是ApplicationContext了。 具体实现我们来用回顾里的代码，来窥探下AplicationContext的秘密。这里以ClassPathXmlApplicationContext为例。 先看下使用姿势: 12//1.加载spring.xml配置文件ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml"); 具体执行的构造方法： 1234567public ClassPathXmlApplicationContext(String[] configLocations, boolean refresh, @Nullable ApplicationContext parent) throws BeansException &#123; super(parent); this.setConfigLocations(configLocations); if (refresh) &#123; this.refresh();//核心部分 &#125;&#125; 其中核心部分就是 refresh()，它承担这IOC容器启动的一系列操作。 还没写完……….]]></content>
       <categories>
-        <category>spring boot</category>
+        <category>spring</category>
       </categories>
       <tags>
-        <tag>spring boot</tag>
+        <tag>spring</tag>
       </tags>
   </entry>
   <entry>
@@ -55,6 +44,17 @@
         <tag>技术研究</tag>
         <tag>hexo</tag>
         <tag>博客搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Sping Boot---第一篇 前言]]></title>
+    <url>%2F2018%2F05%2F28%2FSping%20Boot---%E7%AC%AC%E4%B8%80%E7%AF%87%20%E5%89%8D%E8%A8%80%2F</url>
+    <content type="text"><![CDATA[点滴之水，可以穿石 &nbsp;&nbsp;&nbsp;&nbsp;好久没写文章了，最近刚好在学习spring boot，于是就强迫着自己写一下自己的学习过程。本人目前大四实习阶段，写的不好，希望各位读者多多指导。感谢感谢！ 开发环境说明 java 8 spring boot：2.0.5.RELEASE IDE：IntelliJ IDEA 2018.2.3 x64 maven：apache-maven-3.5.4 结束语学习需要持之以恒，希望自己能够坚持写下去。不要半途而废才好。加油加油！]]></content>
+      <categories>
+        <category>spring boot</category>
+      </categories>
+      <tags>
+        <tag>spring boot</tag>
       </tags>
   </entry>
   <entry>

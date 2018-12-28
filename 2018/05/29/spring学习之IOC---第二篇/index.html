@@ -120,7 +120,7 @@
 <meta property="og:description" content="只是想沉浸在代码的海洋毕竟电脑是一个单纯的小孩只要顺着他的小脾气就好比起带着面具的大人要好很多&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;—/大名叫李鑫/   ​         上一篇谈了一下spri">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.wailian.work/images/2018/12/28/IOC.png">
-<meta property="og:updated_time" content="2018-12-28T09:57:44.394Z">
+<meta property="og:updated_time" content="2018-12-28T10:08:28.772Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring学习之IOC---第二篇">
 <meta name="twitter:description" content="只是想沉浸在代码的海洋毕竟电脑是一个单纯的小孩只要顺着他的小脾气就好比起带着面具的大人要好很多&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;—/大名叫李鑫/   ​         上一篇谈了一下spri">
@@ -415,15 +415,21 @@
 <hr>
 
 <p>​         上一篇谈了一下spring和传统开发的区别，没有过多的深入spring里去。本篇会详细讲一下spring是如何创建bean的。</p>
-<p><span id="jump"></span></p>
-<h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1.加载spring.xml配置文件</span></span><br><span class="line">        ApplicationContext applicationContext = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"spring.xml"</span>);</span><br><span class="line">        <span class="comment">//2.通过id值获取对象</span></span><br><span class="line">        Student stu = (Student) applicationContext.getBean(<span class="string">"stu"</span>);</span><br><span class="line">        System.out.println(stu);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><p><span id="jump"></span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1.加载spring.xml配置文件</span></span><br><span class="line">        ApplicationContext applicationContext = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"spring.xml"</span>);</span><br><span class="line">        <span class="comment">//2.通过id值获取对象</span></span><br><span class="line">        Student stu = (Student) applicationContext.getBean(<span class="string">"stu"</span>);</span><br><span class="line">        System.out.println(stu);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在上一篇中，我们通过id获取对象时主要在关注第二步通过id获取对象，在本篇中我们将关注点放在第一步加载spring配置文件，来看看spring是如何自动创建bean的。</p>
 <h1 id="IOC容器设计"><a href="#IOC容器设计" class="headerlink" title="IOC容器设计"></a>IOC容器设计</h1><p><img src="http://www.wailian.work/images/2018/12/28/IOC.png" alt="IOC.png"></p>
 <p>主要两条线</p>
 <h2 id="BeanFactory"><a href="#BeanFactory" class="headerlink" title="BeanFactory"></a>BeanFactory</h2><p>一条是以BeanFactory到HierarchicalBeanFactory再到ConfigurableBeanFactory。BeanFactory作为IOC容器的基本实现，譬如getBean() 可以从容器中拿到对应bean。而HierarchicalBeanFactory 则增加了getParentBeanFactory()可以获取父级容器。ConfigurableBeanFactory定义了一些配置功能。总起来我们可以把这条线定义为IOC容器的基本实现。</p>
 <h2 id="ApplicationContext"><a href="#ApplicationContext" class="headerlink" title="ApplicationContext"></a>ApplicationContext</h2><p>一条是以ApplicationContext为核心的接口设计。其下游接口ConfigurableApplicationContext和WebApplicationContext是相较于BeanFactory的更高级实现。</p>
 <p>在开发中应用最多的应该就是ApplicationContext了。</p>
-<h1 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h1><p>我们来用<a href="#jump">回顾</a>里的代码，来窥探下AplicationContext的秘密。</p>
+<h1 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h1><p>我们来用<strong><a href="#jump">回顾</a></strong>里的代码，来窥探下AplicationContext的秘密。这里以ClassPathXmlApplicationContext为例。</p>
+<p>先看下使用姿势:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.加载spring.xml配置文件</span></span><br><span class="line">ApplicationContext applicationContext = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"spring.xml"</span>);</span><br></pre></td></tr></table></figure>
+<p>具体执行的构造方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ClassPathXmlApplicationContext</span><span class="params">(String[] configLocations, <span class="keyword">boolean</span> refresh, @Nullable ApplicationContext parent)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(parent);</span><br><span class="line">    <span class="keyword">this</span>.setConfigLocations(configLocations);</span><br><span class="line">    <span class="keyword">if</span> (refresh) &#123;</span><br><span class="line">        <span class="keyword">this</span>.refresh();<span class="comment">//核心部分</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中核心部分就是 <code>refresh()</code>，它承担这IOC容器启动的一系列操作。</p>
+<p>还没写完……….</p>
 
       
     </div>
@@ -454,8 +460,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/29/spring学习之IOC---第一篇/" rel="next" title="spring学习之IOC---第一篇">
-                <i class="fa fa-chevron-left"></i> spring学习之IOC---第一篇
+              <a href="/2018/05/28/Hexo博客搭建教程/" rel="next" title="Hexo搭建博客教程">
+                <i class="fa fa-chevron-left"></i> Hexo搭建博客教程
               </a>
             
           </div>
@@ -464,8 +470,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/21/spring-boot-第三篇-配置详解/" rel="prev" title="spring boot---第三篇 配置详解">
-                spring boot---第三篇 配置详解 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/29/spring学习之IOC---第一篇/" rel="prev" title="spring学习之IOC---第一篇">
+                spring学习之IOC---第一篇 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
