@@ -111,18 +111,18 @@
 
 
 
-<meta name="description" content="BeanDefinition载入将用户定义好的bean信息转化成BeanDefinition的形式，存储到内存中。BeanDefinition包含了spring应用中各对象间的相互依赖关系，Bean对象的创建于依赖注入都是依照BeanDefinition来进行初始化、注入等，就好比Bean创建的配方。  主入口DefaultBeanDefinitionDocumentReader.doRegist">
+<meta name="description" content="12345title: spring学习之IOC---第二篇date: 2018-10-04categories: springtags:  - spring  只是想沉浸在代码的海洋毕竟电脑是一个单纯的小孩只要顺着他的小脾气就好比起带着面具的大人要好很多&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Marks">
 <meta property="og:url" content="https://marksmeng.github.io/2019/01/02/spring学习之IOC---第三篇/index.html">
 <meta property="og:site_name" content="Marks">
-<meta property="og:description" content="BeanDefinition载入将用户定义好的bean信息转化成BeanDefinition的形式，存储到内存中。BeanDefinition包含了spring应用中各对象间的相互依赖关系，Bean对象的创建于依赖注入都是依照BeanDefinition来进行初始化、注入等，就好比Bean创建的配方。  主入口DefaultBeanDefinitionDocumentReader.doRegist">
+<meta property="og:description" content="12345title: spring学习之IOC---第二篇date: 2018-10-04categories: springtags:  - spring  只是想沉浸在代码的海洋毕竟电脑是一个单纯的小孩只要顺着他的小脾气就好比起带着面具的大人要好很多&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.wailian.work/images/2019/01/02/BeanDefinition.png">
-<meta property="og:updated_time" content="2019-01-07T10:48:44.050Z">
+<meta property="og:updated_time" content="2019-01-07T10:53:25.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Marks">
-<meta name="twitter:description" content="BeanDefinition载入将用户定义好的bean信息转化成BeanDefinition的形式，存储到内存中。BeanDefinition包含了spring应用中各对象间的相互依赖关系，Bean对象的创建于依赖注入都是依照BeanDefinition来进行初始化、注入等，就好比Bean创建的配方。  主入口DefaultBeanDefinitionDocumentReader.doRegist">
+<meta name="twitter:description" content="12345title: spring学习之IOC---第二篇date: 2018-10-04categories: springtags:  - spring  只是想沉浸在代码的海洋毕竟电脑是一个单纯的小孩只要顺着他的小脾气就好比起带着面具的大人要好很多&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;">
 <meta name="twitter:image" content="http://www.wailian.work/images/2019/01/02/BeanDefinition.png">
 
 
@@ -387,7 +387,12 @@
       
 
       
-        <h1 id="BeanDefinition载入"><a href="#BeanDefinition载入" class="headerlink" title="BeanDefinition载入"></a>BeanDefinition载入</h1><p>将用户定义好的bean信息转化成BeanDefinition的形式，存储到内存中。BeanDefinition包含了spring应用中各对象间的相互依赖关系，Bean对象的创建于依赖注入都是依照BeanDefinition来进行初始化、注入等，就好比Bean创建的配方。</p>
+        <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: spring学习之IOC---第二篇</span><br><span class="line">date: 2018-10-04</span><br><span class="line">categories: spring</span><br><span class="line">tags:</span><br><span class="line">  - spring</span><br></pre></td></tr></table></figure>
+<p><hr></p>
+<p><blockquote class="blockquote-center">只是想沉浸在代码的海洋<br>毕竟<br>电脑是一个单纯的小孩<br>只要顺着他的小脾气就好<br>比起带着面具的大人要好很多<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;—/<em>大名叫李鑫</em>/</blockquote></p>
+<hr>
+
+<h1 id="BeanDefinition载入"><a href="#BeanDefinition载入" class="headerlink" title="BeanDefinition载入"></a>BeanDefinition载入</h1><p>将用户定义好的bean信息转化成BeanDefinition的形式，存储到内存中。BeanDefinition包含了spring应用中各对象间的相互依赖关系，Bean对象的创建于依赖注入都是依照BeanDefinition来进行初始化、注入等，就好比Bean创建的配方。</p>
 <p><img src="http://www.wailian.work/images/2019/01/02/BeanDefinition.png" alt="BeanDefinition.png"></p>
 <p>主入口DefaultBeanDefinitionDocumentReader.doRegisterBeanDefinitions()</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doRegisterBeanDefinitions</span><span class="params">(Element root)</span> </span>&#123;</span><br><span class="line">    BeanDefinitionParserDelegate parent = <span class="keyword">this</span>.delegate;</span><br><span class="line">    <span class="keyword">this</span>.delegate = <span class="keyword">this</span>.createDelegate(<span class="keyword">this</span>.getReaderContext(), root, parent);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.delegate.isDefaultNamespace(root)) &#123;</span><br><span class="line">        <span class="comment">//是否是DefaultNamespace</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.preProcessXml(root);</span><br><span class="line">    <span class="comment">//开始解析document</span></span><br><span class="line">    <span class="keyword">this</span>.parseBeanDefinitions(root, <span class="keyword">this</span>.delegate);</span><br><span class="line">    <span class="keyword">this</span>.postProcessXml(root);</span><br><span class="line">    <span class="keyword">this</span>.delegate = parent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
