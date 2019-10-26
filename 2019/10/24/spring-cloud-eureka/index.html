@@ -100,7 +100,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="spring cloud," />
 
 
 
@@ -111,12 +111,13 @@
 
 
 
-<meta name="description" content="title: spring学习之IOC—第二篇date: 2018-10-04categories: springtags:  spring  123456789`文中所有项目均使用：    IDEA编辑器基于java8进行构建    Maven进行依赖管理    Git进行版本管理    Spring Cloud版本：Hoxton.BUILD-SNAPSHOT     Spring Boot 版">
+<meta name="description" content="文中所有项目均使用： IDEA编辑器基于java8进行构建 Maven进行依赖管理 Git进行版本管理 Spring Cloud版本：Hoxton.BUILD-SNAPSHOT  Spring Boot 版本：2.2.1.BUILD-SNAPSHOT  服务治理服务治理是微服务架构中最为核心和基础的模块。它主要用来实现发现各个微服务实例的自动注册与发现。一个服务治理组件应该具有以下功能： 服务注">
+<meta name="keywords" content="spring cloud">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Marks">
+<meta property="og:title" content="spring-cloud-eureka">
 <meta property="og:url" content="https://marksmeng.github.io/2019/10/24/spring-cloud-eureka/index.html">
 <meta property="og:site_name" content="Marks">
-<meta property="og:description" content="title: spring学习之IOC—第二篇date: 2018-10-04categories: springtags:  spring  123456789`文中所有项目均使用：    IDEA编辑器基于java8进行构建    Maven进行依赖管理    Git进行版本管理    Spring Cloud版本：Hoxton.BUILD-SNAPSHOT     Spring Boot 版">
+<meta property="og:description" content="文中所有项目均使用： IDEA编辑器基于java8进行构建 Maven进行依赖管理 Git进行版本管理 Spring Cloud版本：Hoxton.BUILD-SNAPSHOT  Spring Boot 版本：2.2.1.BUILD-SNAPSHOT  服务治理服务治理是微服务架构中最为核心和基础的模块。它主要用来实现发现各个微服务实例的自动注册与发现。一个服务治理组件应该具有以下功能： 服务注">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.postimg.cc/JhfCsqvK/1571921888532.png">
 <meta property="og:image" content="https://i.postimg.cc/pTYv3SX4/20059765.png">
@@ -125,10 +126,10 @@
 <meta property="og:image" content="https://i.postimg.cc/FRq1GRGG/1571927067795.png">
 <meta property="og:image" content="https://i.postimg.cc/T3QpsG98/1571928482608.png">
 <meta property="og:image" content="https://i.postimg.cc/NMDJ9K8J/1571928585852.png">
-<meta property="og:updated_time" content="2019-10-24T15:09:21.467Z">
+<meta property="og:updated_time" content="2019-10-26T14:39:25.293Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Marks">
-<meta name="twitter:description" content="title: spring学习之IOC—第二篇date: 2018-10-04categories: springtags:  spring  123456789`文中所有项目均使用：    IDEA编辑器基于java8进行构建    Maven进行依赖管理    Git进行版本管理    Spring Cloud版本：Hoxton.BUILD-SNAPSHOT     Spring Boot 版">
+<meta name="twitter:title" content="spring-cloud-eureka">
+<meta name="twitter:description" content="文中所有项目均使用： IDEA编辑器基于java8进行构建 Maven进行依赖管理 Git进行版本管理 Spring Cloud版本：Hoxton.BUILD-SNAPSHOT  Spring Boot 版本：2.2.1.BUILD-SNAPSHOT  服务治理服务治理是微服务架构中最为核心和基础的模块。它主要用来实现发现各个微服务实例的自动注册与发现。一个服务治理组件应该具有以下功能： 服务注">
 <meta name="twitter:image" content="https://i.postimg.cc/JhfCsqvK/1571921888532.png">
 
 
@@ -165,7 +166,7 @@
 
 
 
-  <title> | Marks</title>
+  <title>spring-cloud-eureka | Marks</title>
   
 
 
@@ -343,7 +344,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">spring-cloud-eureka</h1>
         
 
         <div class="post-meta">
@@ -355,7 +356,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-24T22:58:39+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-24T00:00:00+08:00">
                 2019-10-24
               </time>
             
@@ -365,6 +366,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring-cloud/" itemprop="url" rel="index">
+                    <span itemprop="name">spring cloud</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,11 +416,14 @@
       
 
       
-        <p>title: spring学习之IOC—第二篇<br>date: 2018-10-04<br>categories: spring<br>tags:</p>
-<ul>
-<li>spring</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">`文中所有项目均使用：</span><br><span class="line">    IDEA编辑器基于java8进行构建</span><br><span class="line">    Maven进行依赖管理</span><br><span class="line"></span><br><span class="line">    Git进行版本管理</span><br><span class="line"></span><br><span class="line">    Spring Cloud版本：Hoxton.BUILD-SNAPSHOT </span><br><span class="line"></span><br><span class="line">    Spring Boot 版本：2.2.1.BUILD-SNAPSHOT`</span><br></pre></td></tr></table></figure>
+        <blockquote>
+<p>文中所有项目均使用：</p>
+<p>IDEA编辑器基于java8进行构建</p>
+<p>Maven进行依赖管理</p>
+<p>Git进行版本管理</p>
+<p>Spring Cloud版本：Hoxton.BUILD-SNAPSHOT </p>
+<p>Spring Boot 版本：2.2.1.BUILD-SNAPSHOT</p>
+</blockquote>
 <h2 id="服务治理"><a href="#服务治理" class="headerlink" title="服务治理"></a>服务治理</h2><p>服务治理是微服务架构中最为核心和基础的模块。它主要用来实现发现各个微服务实例的自动注册与发现。一个服务治理组件应该具有以下功能：</p>
 <h3 id="服务注册表："><a href="#服务注册表：" class="headerlink" title="服务注册表："></a>服务注册表：</h3><p>服务治理组件的核心内容，用于记录微服务的各个信息（服务名称、ip、端口等）。并对外提供查询API和管理API，查询API用于查询可用的微服务实例，管理API用于注册和注销微服务实例。</p>
 <h3 id="服务注册发现："><a href="#服务注册发现：" class="headerlink" title="服务注册发现："></a>服务注册发现：</h3><p>服务注册是指微服务在启动时，将自己的信息注册到服务治理组件上的过程。</p>
@@ -445,7 +471,7 @@
 <p><a href="https://postimg.cc/xXJfkwhg" target="_blank" rel="noopener"><img src="https://i.postimg.cc/T3QpsG98/1571928482608.png" alt="控制台信息"></a></p>
 <p>再去访问<a href="127.0.0.1:38761" target="_blank" rel="noopener">127.0.0.1:38761</a>可以看到</p>
 <p><a href="https://postimg.cc/0M6dh2BD" target="_blank" rel="noopener"><img src="https://i.postimg.cc/NMDJ9K8J/1571928585852.png" alt="Eureka 服务注册中心"></a></p>
-<p>从上图可以看到名为CONFIG-SERVER(对应配置文件中的server.name)已经注册到了Eureka服务上了</p>
+<p>从上图可以看到名为<code>CONFIG-SERVER</code>(对应配置文件中的server.name)已经注册到了Eureka服务上了</p>
 <p>Eureka的自我保护模式</p>
 <p>在开发阶段，可以经常在页面上看到</p>
 <p><strong>EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY’RE NOT. RENEWALS ARE LESSER THAN THRESHOLD AND HENCE THE INSTANCES ARE NOT BEING EXPIRED JUST TO BE SAFE.</strong></p>
@@ -466,6 +492,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/spring-cloud/" rel="tag"># spring cloud</a>
+          
+        </div>
+      
 
       
       
@@ -484,6 +516,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/26/spring-cloud-config/" rel="prev" title="spring-cloud-config">
+                spring-cloud-config <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -564,7 +600,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -575,7 +611,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -586,7 +622,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

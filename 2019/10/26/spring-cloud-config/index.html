@@ -100,7 +100,7 @@
 
 
 
-  <meta name="keywords" content="spring," />
+  <meta name="keywords" content="spring cloud," />
 
 
 
@@ -111,20 +111,24 @@
 
 
 
-<meta name="description" content="只是想沉浸在代码的海洋毕竟电脑是一个单纯的小孩只要顺着他的小脾气就好比起带着面具的大人要好很多&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;—/大名叫李鑫/ ​         上一篇谈了一下spring">
-<meta name="keywords" content="spring">
+<meta name="description" content="成功的背后，从来都不是光鲜亮丽。   写在前面：   spring cloud 系列现在只是分享一些使用教程，比较浅显的分享怎么使用，至于分布式高可用会在后面再来分享 文中所有项目均使用： IDEA编辑器基于java8进行构建 Maven进行依赖管理 Git进行版本管理 Spring Cloud版本：Hoxton.BUILD-SNAPSHOT Spring Boot 版本：2.2.1.BUILD">
+<meta name="keywords" content="spring cloud">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring学习之IOC---第二篇">
-<meta property="og:url" content="https://marksmeng.github.io/2018/10/04/spring学习之IOC---第二篇/index.html">
+<meta property="og:title" content="spring-cloud-config">
+<meta property="og:url" content="https://marksmeng.github.io/2019/10/26/spring-cloud-config/index.html">
 <meta property="og:site_name" content="Marks">
-<meta property="og:description" content="只是想沉浸在代码的海洋毕竟电脑是一个单纯的小孩只要顺着他的小脾气就好比起带着面具的大人要好很多&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;—/大名叫李鑫/ ​         上一篇谈了一下spring">
+<meta property="og:description" content="成功的背后，从来都不是光鲜亮丽。   写在前面：   spring cloud 系列现在只是分享一些使用教程，比较浅显的分享怎么使用，至于分布式高可用会在后面再来分享 文中所有项目均使用： IDEA编辑器基于java8进行构建 Maven进行依赖管理 Git进行版本管理 Spring Cloud版本：Hoxton.BUILD-SNAPSHOT Spring Boot 版本：2.2.1.BUILD">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://www.wailian.work/images/2018/12/28/IOC.png">
-<meta property="og:updated_time" content="2019-01-02T03:30:57.145Z">
+<meta property="og:image" content="https://i.postimg.cc/DZdmvqfC/image.png">
+<meta property="og:image" content="https://i.postimg.cc/28bNtqrM/1572081152061.png">
+<meta property="og:image" content="https://i.postimg.cc/xT9GtZH4/1572083056845.png">
+<meta property="og:image" content="https://i.postimg.cc/4NrfXD58/1572083153879.png">
+<meta property="og:image" content="https://i.postimg.cc/hv1SdDV0/1572099468147.png">
+<meta property="og:updated_time" content="2019-10-26T14:36:20.703Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring学习之IOC---第二篇">
-<meta name="twitter:description" content="只是想沉浸在代码的海洋毕竟电脑是一个单纯的小孩只要顺着他的小脾气就好比起带着面具的大人要好很多&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;—/大名叫李鑫/ ​         上一篇谈了一下spring">
-<meta name="twitter:image" content="http://www.wailian.work/images/2018/12/28/IOC.png">
+<meta name="twitter:title" content="spring-cloud-config">
+<meta name="twitter:description" content="成功的背后，从来都不是光鲜亮丽。   写在前面：   spring cloud 系列现在只是分享一些使用教程，比较浅显的分享怎么使用，至于分布式高可用会在后面再来分享 文中所有项目均使用： IDEA编辑器基于java8进行构建 Maven进行依赖管理 Git进行版本管理 Spring Cloud版本：Hoxton.BUILD-SNAPSHOT Spring Boot 版本：2.2.1.BUILD">
+<meta name="twitter:image" content="https://i.postimg.cc/DZdmvqfC/image.png">
 
 
 
@@ -154,13 +158,13 @@
 
 
 
-  <link rel="canonical" href="https://marksmeng.github.io/2018/10/04/spring学习之IOC---第二篇/"/>
+  <link rel="canonical" href="https://marksmeng.github.io/2019/10/26/spring-cloud-config/"/>
 
 
 
 
 
-  <title>spring学习之IOC---第二篇 | Marks</title>
+  <title>spring-cloud-config | Marks</title>
   
 
 
@@ -321,7 +325,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://marksmeng.github.io/2018/10/04/spring学习之IOC---第二篇/">
+    <link itemprop="mainEntityOfPage" href="https://marksmeng.github.io/2019/10/26/spring-cloud-config/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Marks Meng">
@@ -338,7 +342,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">spring学习之IOC---第二篇</h1>
+          <h1 class="post-title" itemprop="name headline">spring-cloud-config</h1>
         
 
         <div class="post-meta">
@@ -350,8 +354,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-04T00:00:00+08:00">
-                2018-10-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-26T00:00:00+08:00">
+                2019-10-26
               </time>
             
 
@@ -373,8 +377,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/spring/" itemprop="url" rel="index">
-                    <span itemprop="name">spring</span>
+                  <a href="/categories/spring-cloud/" itemprop="url" rel="index">
+                    <span itemprop="name">spring cloud</span>
                   </a>
                 </span>
 
@@ -411,36 +415,79 @@
 
       
         <p><hr></p>
-<p><blockquote class="blockquote-center">只是想沉浸在代码的海洋<br>毕竟<br>电脑是一个单纯的小孩<br>只要顺着他的小脾气就好<br>比起带着面具的大人要好很多<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;—/<em>大名叫李鑫</em>/</blockquote></p>
-<p><hr><br>​         上一篇谈了一下spring和传统开发的区别，没有过多的深入spring里去。本篇会详细讲一下spring是如何创建bean的。</p>
-<p><span id="jump"></span></p>
-<h1 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a>回顾</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1.加载spring.xml配置文件</span></span><br><span class="line">        ApplicationContext applicationContext = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"spring.xml"</span>);</span><br><span class="line">        <span class="comment">//2.通过id值获取对象</span></span><br><span class="line">        Student stu = (Student) applicationContext.getBean(<span class="string">"stu"</span>);</span><br><span class="line">        System.out.println(stu);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在上一篇中，我们通过id获取对象时主要在关注第二步通过id获取对象，在本篇中我们将关注点放在第一步加载spring配置文件，来看看spring是如何自动创建bean的。</p>
-<h1 id="IOC容器设计"><a href="#IOC容器设计" class="headerlink" title="IOC容器设计"></a>IOC容器设计</h1><p><img src="http://www.wailian.work/images/2018/12/28/IOC.png" alt="IOC.png"></p>
-<p>主要两条线</p>
-<h2 id="BeanFactory"><a href="#BeanFactory" class="headerlink" title="BeanFactory"></a>BeanFactory</h2><p>一条是以BeanFactory到HierarchicalBeanFactory再到ConfigurableBeanFactory。BeanFactory作为IOC容器的基本实现，譬如getBean() 可以从容器中拿到对应bean。而HierarchicalBeanFactory 则增加了getParentBeanFactory()可以获取父级容器。ConfigurableBeanFactory定义了一些配置功能。总起来我们可以把这条线定义为IOC容器的基本实现。</p>
-<h2 id="ApplicationContext"><a href="#ApplicationContext" class="headerlink" title="ApplicationContext"></a>ApplicationContext</h2><p>一条是以ApplicationContext为核心的接口设计。其下游接口ConfigurableApplicationContext和WebApplicationContext是相较于BeanFactory的更高级实现。</p>
-<p>在开发中应用最多的应该就是ApplicationContext了。</p>
-<h1 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h1><p>我们来用<strong><a href="#jump">回顾</a></strong>里的代码，来窥探下AplicationContext的秘密。这里以ClassPathXmlApplicationContext为例。</p>
-<p>先看下使用姿势:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1.加载spring.xml配置文件</span></span><br><span class="line">ApplicationContext applicationContext = <span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"spring.xml"</span>);</span><br></pre></td></tr></table></figure>
-<p>具体执行的构造方法：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ClassPathXmlApplicationContext</span><span class="params">(String[] configLocations, <span class="keyword">boolean</span> refresh, @Nullable ApplicationContext parent)</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(parent);</span><br><span class="line">    <span class="keyword">this</span>.setConfigLocations(configLocations);</span><br><span class="line">    <span class="keyword">if</span> (refresh) &#123;</span><br><span class="line">        <span class="keyword">this</span>.refresh();<span class="comment">//核心部分</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其中核心部分就是 <code>refresh()</code>，它承担这IOC容器启动的一系列操作。</p>
-<p>看下 <code>refresh()</code>的具体实现：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">refresh</span><span class="params">()</span> <span class="keyword">throws</span> BeansException, IllegalStateException </span>&#123;</span><br><span class="line">    Object var1 = <span class="keyword">this</span>.startupShutdownMonitor;</span><br><span class="line">    <span class="keyword">synchronized</span>(<span class="keyword">this</span>.startupShutdownMonitor) &#123;</span><br><span class="line">        <span class="keyword">this</span>.prepareRefresh();</span><br><span class="line">        ConfigurableListableBeanFactory beanFactory = <span class="keyword">this</span>.obtainFreshBeanFactory();</span><br><span class="line">        <span class="keyword">this</span>.prepareBeanFactory(beanFactory);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.postProcessBeanFactory(beanFactory);</span><br><span class="line">            <span class="keyword">this</span>.invokeBeanFactoryPostProcessors(beanFactory);</span><br><span class="line">            <span class="keyword">this</span>.registerBeanPostProcessors(beanFactory);</span><br><span class="line">            <span class="keyword">this</span>.initMessageSource();</span><br><span class="line">            <span class="keyword">this</span>.initApplicationEventMulticaster();</span><br><span class="line">            <span class="keyword">this</span>.onRefresh();</span><br><span class="line">            <span class="keyword">this</span>.registerListeners();</span><br><span class="line">            <span class="keyword">this</span>.finishBeanFactoryInitialization(beanFactory);</span><br><span class="line">            <span class="keyword">this</span>.finishRefresh();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (BeansException var9) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>.logger.isWarnEnabled()) &#123;</span><br><span class="line">                <span class="keyword">this</span>.logger.warn(<span class="string">"Exception encountered during context initialization - cancelling refresh attempt: "</span> + var9);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">this</span>.destroyBeans();</span><br><span class="line">            <span class="keyword">this</span>.cancelRefresh(var9);</span><br><span class="line">            <span class="keyword">throw</span> var9;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.resetCommonCaches();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>IOC容器初始化顺序大致分为下面三个部分，后续的代码分析也是基于这三块依次展开</p>
-<h2 id="Resource定位"><a href="#Resource定位" class="headerlink" title="Resource定位"></a>Resource定位</h2><p>这个主要是指BeanDefinition资源的定位，或者我们就简单的认为我们的配置文件定位</p>
-<p>来看代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ConfigurableListableBeanFactory beanFactory = <span class="keyword">this</span>.obtainFreshBeanFactory();</span><br></pre></td></tr></table></figure>
-<p>obtainFreshBeanFactory告诉子类启动refreshBeanFactory()方法，Bean定义资源文件的载入从子类的refreshBeanFactory()方法启动。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">refreshBeanFactory</span><span class="params">()</span> <span class="keyword">throws</span> BeansException </span>&#123;</span><br><span class="line">    	<span class="comment">//省略部分代码...</span></span><br><span class="line">        <span class="comment">//创建beanFactory</span></span><br><span class="line">        DefaultListableBeanFactory beanFactory = <span class="keyword">this</span>.createBeanFactory();</span><br><span class="line">        beanFactory.setSerializationId(<span class="keyword">this</span>.getId());</span><br><span class="line">        <span class="comment">//自定义beanFactory配置</span></span><br><span class="line">        <span class="keyword">this</span>.customizeBeanFactory(beanFactory);</span><br><span class="line">        <span class="comment">//由子类实现，读取bean的配置文件，转化为对应的beandefinitions</span></span><br><span class="line">        <span class="keyword">this</span>.loadBeanDefinitions(beanFactory);</span><br><span class="line">       <span class="comment">//省略部分代码...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>获取对应的Resource</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">loadBeanDefinitions</span><span class="params">(String location, @Nullable Set&lt;Resource&gt; actualResources)</span> <span class="keyword">throws</span> BeanDefinitionStoreException </span>&#123;</span><br><span class="line">       <span class="comment">//省略部分代码...</span></span><br><span class="line">  	   Resource[] resources = ((ResourcePatternResolver)resourceLoader).getResources(location);</span><br><span class="line">      <span class="comment">//省略部分代码...</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>getResources()最终由 <code>DefaultResourceLoader</code>来实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Resource <span class="title">getResource</span><span class="params">(String location)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//省略部分代码...</span></span><br><span class="line">        <span class="keyword">if</span> (!var2.hasNext()) &#123;</span><br><span class="line">            <span class="comment">//判断是否单斜杠“/”开头</span></span><br><span class="line">            <span class="keyword">if</span> (location.startsWith(<span class="string">"/"</span>)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.getResourceByPath(location);</span><br><span class="line">            &#125;</span><br><span class="line">			<span class="comment">//判断是否classpath开头</span></span><br><span class="line">            <span class="keyword">if</span> (location.startsWith(<span class="string">"classpath:"</span>)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> ClassPathResource(location.substring(<span class="string">"classpath:"</span>.length()), <span class="keyword">this</span>.getClassLoader());</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 尝试使用UrlResource，若是不能识别的url协议则抛异常</span></span><br><span class="line">                URL url = <span class="keyword">new</span> URL(location);</span><br><span class="line">                <span class="keyword">return</span> (Resource)(ResourceUtils.isFileURL(url) ? <span class="keyword">new</span> FileUrlResource(url) : <span class="keyword">new</span> UrlResource(url));</span><br><span class="line">            &#125; <span class="keyword">catch</span> (MalformedURLException var5) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.getResourceByPath(location);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//省略部分代码...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="BeanDefinition载入"><a href="#BeanDefinition载入" class="headerlink" title="BeanDefinition载入"></a>BeanDefinition载入</h2><p>见<a href="https://marksmeng.github.io/2018/09/21/spring-boot-%E7%AC%AC%E4%B8%89%E7%AF%87-%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/#more">spring学习之IOC—第三篇</a></p>
-<h2 id="注册BeanDefinition"><a href="#注册BeanDefinition" class="headerlink" title="注册BeanDefinition"></a>注册BeanDefinition</h2><p>见<a href="https://marksmeng.github.io/2018/09/21/spring-boot-%E7%AC%AC%E4%B8%89%E7%AF%87-%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/#more">spring学习之IOC—第四篇</a></p>
+<p><blockquote class="blockquote-center">成功的背后，从来都不是光鲜亮丽。</blockquote></p>
+<hr>
+
+<p>写在前面：</p>
+<hr>
+<blockquote>
+<p>spring cloud 系列现在只是分享一些使用教程，比较浅显的分享怎么使用，至于分布式高可用会在后面再来分享</p>
+<p>文中所有项目均使用：</p>
+<p>IDEA编辑器基于java8进行构建</p>
+<p>Maven进行依赖管理</p>
+<p>Git进行版本管理</p>
+<p>Spring Cloud版本：<code>Hoxton.BUILD-SNAPSHOT</code></p>
+<p>Spring Boot 版本：<code>2.2.1.BUILD-SNAPSHOT</code></p>
+</blockquote>
+<hr>
+<h1 id="什么是服务配置中心"><a href="#什么是服务配置中心" class="headerlink" title="什么是服务配置中心"></a>什么是服务配置中心</h1><p>​    对于配置文件，相信很多开发者都不陌生，它可以提供动态修改程序运行的能力，对于生产的系统，总需要一些控制可以动态的改变程序的运行状态来贴合实际的需求（比如灰度控制，限流调整等），使得系统可以使用快速变化的市场环境。在单机版的系统服务中，我们称之为配置文件（例如spring boot中的<code>application.yml</code>、<code>application.properties</code>、<code>application.bootstrap</code>等）,在分布式集群系统中，我们把配置文件统一放置在服务配置中心系统进行统一管理，称之为服务配置中心系统。</p>
+<p>​    <code>spring-cloud-config</code>为分布式系统外部化配置提供了服务端和客户端的支持，包括<code>config server</code>和<code>config client</code>两部分。支持<code>git</code>、<code>svn</code>、<code>vault</code>、<code>jdbc</code>和本地几种存储方式。</p>
+<h1 id="为什么要使用服务配置中心"><a href="#为什么要使用服务配置中心" class="headerlink" title="为什么要使用服务配置中心"></a>为什么要使用服务配置中心</h1><p>​    世界上任何事物存在即合理，服务配置中心的存在说明就有这样的需求，需要将各个微服务的配置文件进行统一的管理。</p>
+<p>​    使用服务配置中心之前：</p>
+<p>​        1.不利于维护：一个微服务在正式上线之前可能存在多种环境，例如开发环境（<code>application-dev.properties</code>）、测试环境（<code>application-test.properties</code>）、生产环境（<code>application-prod.properties</code>)等。在开发人员修改了配置文件之后，都需要重启相应的服务使得配置生效。</p>
+<p><a href="https://postimg.cc/sQx3KGhS" target="_blank" rel="noopener"><img src="https://i.postimg.cc/DZdmvqfC/image.png" alt="image.png"></a></p>
+<p>假如需要改变一个微服务的配置，而这个微服务部署了n个，运维小哥需要把n个服务都关闭全部重新更改配置之后进行重启服务。这样的操作既繁琐又低效。无法做到快速的动态调整，配置文件也就失去了它主要意义之一。</p>
+<p>​        2.不安全：配置信息随着源代码保存在代码库里，容易造成配置泄露。</p>
+<p>​    这时候就需要一个更高效快速的方式来修改各个微服务的配置文件来适应需求。在微服务架构中微服务的配置管理一般有以下需求：</p>
+<p>​    集中管理配置：集中管理整个微服务架构系统中的所有微服务的配置</p>
+<p>​    不同环境不同配置：这个在系统配置文件中尚需做到的，配置中心自然也需要做到</p>
+<p>​    运行时可以快速动态调整：可以快速调整微服务的配置信息，且不重启微服务的情况下是配置文件生效。</p>
+<p>​    自动更新：配置文件改变，微服务可以自动更新</p>
+<h1 id="怎么使用服务配置中心"><a href="#怎么使用服务配置中心" class="headerlink" title="怎么使用服务配置中心"></a>怎么使用服务配置中心</h1><p><a href="https://postimg.cc/MvSLMpcm" target="_blank" rel="noopener"><img src="https://i.postimg.cc/28bNtqrM/1572081152061.png" alt="1572081152061.png"></a></p>
+<p>git仓库：存储配置文件</p>
+<p>config Server：分布式配置管理中心，会维护自己的git仓库信息</p>
+<p>本地git：config Server每次从git仓库拉取配置文件之后都会更新自己本地的git仓库，然后本地读取返回，如果远程的giy仓库无法获取，则使用本地的git仓库信息。</p>
+<p>这里以git为例</p>
+<h2 id="0-前期准备"><a href="#0-前期准备" class="headerlink" title="0.前期准备"></a>0.前期准备</h2><p>首先先在远程仓库（我使用的是gitee,当然也可以选择github）创建一个目录<code>config-repo</code>用于存放配置文件。然后在目录里放置配置文件（我放置了一个微服务的3重环境的配置文件做示例）</p>
+<p><code>client-dev.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">env:</span></span><br><span class="line">  <span class="string">dev</span></span><br></pre></td></tr></table></figure>
+<p><code>client-test.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">env:</span></span><br><span class="line">  <span class="string">test</span></span><br></pre></td></tr></table></figure>
+<p><code>client-prod.yml</code></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">env:</span></span><br><span class="line">  <span class="string">prod</span></span><br></pre></td></tr></table></figure>
+<p>因为配置中心管理者很多的配置文件，所以配置文件的命名方式为：</p>
+<p><code>分支（默认master）</code>+<code>应用名</code>+<code>环境变量（profile)</code></p>
+<h2 id="1-config-Server端"><a href="#1-config-Server端" class="headerlink" title="1.config Server端"></a>1.config Server端</h2><p>在<a href="https://mp.weixin.qq.com/s/zWjqpCzwYi0fIYZahwtQvg" target="_blank" rel="noopener">服务注册与发现（Eureka）</a>一文中我们为eureka创建了一个client端，现在把他改造成config的server端。</p>
+<p>1.在pom文件中引入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-config-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2.添加配置文件信息</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">38762</span> <span class="comment">#服务端口</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  application:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">config-server</span> <span class="comment">#服务名称</span></span><br><span class="line"><span class="attr">  cloud:</span></span><br><span class="line"><span class="attr">    config:</span></span><br><span class="line"><span class="attr">      server:</span></span><br><span class="line"><span class="attr">        git:</span></span><br><span class="line"><span class="attr">          uri:</span> <span class="attr">https://gitee.com/fitzMeng/config-repo</span> <span class="comment">#git仓库</span></span><br><span class="line"><span class="attr">          username:</span> <span class="string">xxxxxxxxx@gmail.com</span> <span class="comment">#账号</span></span><br><span class="line"><span class="attr">          password:</span> <span class="string">********</span> <span class="comment">#密码</span></span><br><span class="line"><span class="attr">          basedir:</span> <span class="string">./config</span>  <span class="comment">#本地存放文件夹</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line"><span class="attr">  client:</span></span><br><span class="line"><span class="attr">    service-url:</span></span><br><span class="line"><span class="attr">      defaultZone:</span> <span class="attr">http://localhost:38761/eureka/</span> <span class="comment">#eureka服务端的地址</span></span><br></pre></td></tr></table></figure>
+<p>3.启动类添加<code>@EnableConfigServer</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableDiscoveryClient</span></span><br><span class="line"><span class="meta">@EnableConfigServer</span></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConfigserverApplication</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SpringApplication.run(ConfigserverApplication.class, args);</span><br><span class="line">        log.info(<span class="string">"ConfigserverApplication启动"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4.启动应用，访问<a href="localhots:38762/client-dev.yml" target="_blank" rel="noopener">localhots:38762/client-dev.yml</a>，返回相应的配置信息，说明已经读取到远程仓库里的配置信息</p>
+<p><a href="https://postimg.cc/0rHJNcVY" target="_blank" rel="noopener"><img src="https://i.postimg.cc/xT9GtZH4/1572083056845.png" alt="1572083056845.png"></a></p>
+<p>在相应的本地配置文件夹下也已经拉取了最新的配置文件信息</p>
+<p><a href="https://postimg.cc/qzxVLZWn" target="_blank" rel="noopener"><img src="https://i.postimg.cc/4NrfXD58/1572083153879.png" alt="1572083153879.png"></a></p>
+<p>至此服务配置中心已经创建成功。</p>
+<p>我们可以通过访问配置信息的URL与配置文件的映射关系，获取相应的配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/&#123;application&#125;/&#123;profile&#125;[/&#123;label&#125;]</span><br><span class="line">/&#123;application&#125;-&#123;profile&#125;.yml</span><br><span class="line">/&#123;label&#125;/&#123;application&#125;-&#123;profile&#125;.yml</span><br><span class="line">/&#123;application&#125;-&#123;profile&#125;.properties</span><br><span class="line">/&#123;label&#125;/&#123;application&#125;-&#123;profile&#125;.properties</span><br></pre></td></tr></table></figure>
+<p>URL会映射{application}-{profile}.yml(或者properties)。{label}对应于git上的不同分支，默认为master。</p>
+<h2 id="2-config-Client-端"><a href="#2-config-Client-端" class="headerlink" title="2.config Client 端"></a>2.config Client 端</h2><p>1.创建一个名为<code>api-gateway</code>的模块（网关模块，后续会进行相关介绍）。然后引入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里引入了2个依赖分别为Eureka的客户端依赖，一个是服务配置中心的客户端依赖。</p>
+<p>2.添加配置文件信息</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">38763</span> <span class="comment">#端口号</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line"><span class="attr">  application:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">api-gateway</span> <span class="comment">#服务名称</span></span><br><span class="line"><span class="attr">  cloud:</span></span><br><span class="line"><span class="attr">    config:</span></span><br><span class="line"><span class="attr">      discovery:</span></span><br><span class="line"><span class="attr">        enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">        service-id:</span> <span class="string">CONFIG-SERVER</span>  <span class="comment">#服务配置中心应用名称</span></span><br><span class="line"><span class="attr">      profile:</span> <span class="string">dev</span> <span class="comment">#开发环境</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line"><span class="attr">  client:</span></span><br><span class="line"><span class="attr">    service-url:</span></span><br><span class="line"><span class="attr">      defaultZone:</span> <span class="attr">http://localhost:38761/eureka/</span> <span class="comment">#eureka服务端的地址</span></span><br></pre></td></tr></table></figure>
+<p>然后在远程git仓库创建一个名为apt-gateway-dev.yml的文件，文件内容为</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">env:</span> <span class="string">dev</span></span><br></pre></td></tr></table></figure>
+<p>然后启动api-gateway应用，会看到控制台报错</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2019-10-26 21:59:54.529  INFO 7372 --- [           main] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:8888</span><br><span class="line">2019-10-26 21:59:55.642  INFO 7372 --- [           main] c.c.c.ConfigServicePropertySourceLocator : Connect Timeout Exception on Url - http://localhost:8888. Will be trying the next url if available</span><br></pre></td></tr></table></figure>
+<p>从控制台可以看到，该应用是向<code>http://localhost:8888</code>获取配置文件信息，而服务配置文件是<code>http://localhost:38761</code>。这个错误就牵扯到spring boot启动加载顺序的问题。如果都是application.yml(application.properties)，服务就会在获取到config服务端信息之前就会去获取配置文件，没有获取到config服务端的信息，自然使用默认的配置。所以将程序里的配置文件名改成bootstrap.properties（优先级高于application.yml）。</p>
+<p>3.编写一个控制层，利用@Value检验一下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EnvController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;env&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String env;</span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/env"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getEnv</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> env;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>启动服务，浏览<a href="http://localhost:38763/env" target="_blank" rel="noopener">http://localhost:38763/env</a>，可以看到打印出git仓库的配置信息</p>
+<p><a href="https://postimg.cc/1V4hxZCg" target="_blank" rel="noopener"><img src="https://i.postimg.cc/hv1SdDV0/1572099468147.png" alt="1572099468147.png"></a></p>
+<p>至此，一个简单的从远程仓库获取配置文件的实例就完成了，但当你修改了远程仓库的配置文件，在修改后刷新页面，你会发现相应的参数值是没有变的，还是原来的值。这是因为配置文件是在启动时加载，虽然远程仓库进行了修改，但服务并不知道参数已经被修改，不会自动更新自己的配置。怎么在远程仓库修改之后，是开启的服务自动获取更改后的值，将会在下一篇<code>分布式配置中心的服务化及动态刷新</code>中介绍。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本篇主要是spring cloud config的一些常规使用，需要注意的坑主要是在config的client端配置文件的加载的顺序需要加以注意以及eureka的注册地址需要放在config的前置配置文件（bootstrap.properties)中，不能放在远程仓库的配置文件里。至于配置文件的动态刷新和实时生效，会在下一篇文章中进行介绍。本文主要使用了git仓库做示例，感兴趣的同学可以试试其他的，比如svn或者本地资源库的形式。</p>
 
       
     </div>
@@ -458,7 +505,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/spring/" rel="tag"># spring</a>
+            <a href="/tags/spring-cloud/" rel="tag"># spring cloud</a>
           
         </div>
       
@@ -471,8 +518,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/21/spring-boot-第三篇-配置详解/" rel="next" title="spring boot---第三篇 配置详解">
-                <i class="fa fa-chevron-left"></i> spring boot---第三篇 配置详解
+              <a href="/2019/10/24/spring-cloud-eureka/" rel="next" title="spring-cloud-eureka">
+                <i class="fa fa-chevron-left"></i> spring-cloud-eureka
               </a>
             
           </div>
@@ -480,10 +527,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/15/spring学习之IOC---第三篇/" rel="prev" title="spring学习之IOC---第三篇">
-                spring学习之IOC---第三篇 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -641,7 +684,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#回顾"><span class="nav-number">1.</span> <span class="nav-text">回顾</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IOC容器设计"><span class="nav-number">2.</span> <span class="nav-text">IOC容器设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BeanFactory"><span class="nav-number">2.1.</span> <span class="nav-text">BeanFactory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ApplicationContext"><span class="nav-number">2.2.</span> <span class="nav-text">ApplicationContext</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#具体实现"><span class="nav-number">3.</span> <span class="nav-text">具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Resource定位"><span class="nav-number">3.1.</span> <span class="nav-text">Resource定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BeanDefinition载入"><span class="nav-number">3.2.</span> <span class="nav-text">BeanDefinition载入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册BeanDefinition"><span class="nav-number">3.3.</span> <span class="nav-text">注册BeanDefinition</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是服务配置中心"><span class="nav-number">1.</span> <span class="nav-text">什么是服务配置中心</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么要使用服务配置中心"><span class="nav-number">2.</span> <span class="nav-text">为什么要使用服务配置中心</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#怎么使用服务配置中心"><span class="nav-number">3.</span> <span class="nav-text">怎么使用服务配置中心</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-前期准备"><span class="nav-number">3.1.</span> <span class="nav-text">0.前期准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-config-Server端"><span class="nav-number">3.2.</span> <span class="nav-text">1.config Server端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-config-Client-端"><span class="nav-number">3.3.</span> <span class="nav-text">2.config Client 端</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
